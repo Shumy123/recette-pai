@@ -360,10 +360,6 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
   background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-weight: 800; font-size: .9rem; max-width: calc(100% - 32px);
 }
 @media (max-width: 380px) { .two { grid-template-columns: 1fr; } .week .nav { width: 24px; } }
-@media (prefers-reduced-motion: no-preference) {
-  .sac, .inspi { animation: pop .45s cubic-bezier(.3,1.5,.5,1); }
-  @keyframes pop { from { transform: scale(.96); } to { transform: none; } }
-}
 .login { display: grid; gap: 14px; justify-items: center; text-align: center; padding: 40px 8px; }
 .login .btn { min-width: 240px; }
 </style>
@@ -512,11 +508,16 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
   function iconeRecette(r, taille) {
     if (!r.photo) return icone(r.titre, repasDe(r)[0], taille);
     const s = h("span", { class: "ficon photo" + (taille ? " " + taille : ""), "aria-hidden": "true" });
-    const img = h("img", { src: photoSrc(r.photo), alt: "", loading: "lazy" });
+    // Every render rebuilds the page: reuse photos already decoded so they don't blink on "Autre idée".
+    const src = photoSrc(r.photo);
+    const deja = photosPretes.get(src);
+    const img = deja ? deja.cloneNode() : h("img", { src, alt: "", decoding: "async" });
+    if (!deja) img.onload = () => photosPretes.set(src, img);
     img.onerror = () => s.replaceWith(icone(r.titre, repasDe(r)[0], taille));
     s.append(img);
     return s;
   }
+  const photosPretes = new Map();
   function photoSrc(id) { return state.photoUrls[id] || (String(id).startsWith("fs:") ? "" : "photos/" + id + ".jpg"); }
 
   // ---------- Dish photos ----------
