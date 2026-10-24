@@ -1,0 +1,1697 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ff5d8f">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>Recettes PAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=M+PLUS+Rounded+1c:wght@500;700;800&family=Itim&display=swap">
+<style>
+/* Identity: kawaii bento. Pastel strawberry-milk, mint and butter; everything round and squishy;
+   a smiling lunchbox mascot; the bag is a two-compartment bento (lunch / goûter).
+   Mochiy Pop One for headings, M PLUS Rounded 1c for reading, Itim for handwritten bits. */
+:root {
+  --bg: #fff6f9;
+  --surface: #ffffff;
+  --ink: #3e2b4f;            /* plum ink */
+  --muted: #8a7499;
+  --line: #f3dbe6;
+  --accent: #ff5d8f;         /* strawberry */
+  --accent-ink: #ffffff;
+  --accent-soft: #ffe3ec;
+  --accent-deep: #e0386d;
+  --mint: #c9f2df; --mint-ink: #1f7a52;
+  --butter: #fff0b3;
+  --lilac: #e9defd;
+  --sky: #d6ecff;
+  --margin: #ff5d8f;
+  --seyes: #f3dbe6; --seyes-faint: #fbeef3;
+  --sun: #ffc94d;
+  --sun-soft: #fff4cc;
+  --ok: #1f8a5b;
+  --ok-soft: #d6f5e6;
+  --warn: #d6334f;
+  --warn-soft: #ffe1e6;
+  --check: #8a5a00;
+  --check-soft: #fff0c7;
+  --d1: #ffb4b4; --d2: #ffc8a6; --d3: #ffdc9a; --d4: #ffeea0; --d5: #def5b0;
+  --d-ink: #3e2b4f;
+  --shadow: 0 4px 0 #f6cfdd;
+  --f-display: "Mochiy Pop One", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --f-body: "M PLUS Rounded 1c", "Nunito", system-ui, -apple-system, sans-serif;
+  --f-hand: "Itim", "Comic Sans MS", cursive;
+  --r: 20px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1f1828; --surface: #2a2135; --ink: #f6eafa; --muted: #b7a3c6; --line: #3d3049;
+    --accent: #ff86aa; --accent-ink: #2a1020; --accent-soft: #46243a; --accent-deep: #ff5d8f;
+    --mint: #1f4536; --mint-ink: #8ce3b9; --butter: #4a4020; --lilac: #3a2f55; --sky: #213a52;
+    --margin: #ff86aa; --seyes: #4a3a56; --seyes-faint: #352a40;
+    --sun: #ffd36e; --sun-soft: #43381c; --ok: #8ce3b9; --ok-soft: #1c3b2d;
+    --warn: #ff8fa3; --warn-soft: #4a1f2a; --check: #ffd36e; --check-soft: #3d3218;
+    --d1: #7a3f4a; --d2: #7f4d3a; --d3: #7a5d32; --d4: #6f6630; --d5: #4f6a35;
+    --d-ink: #fff2f6;
+    --shadow: 0 4px 0 #160f1d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1f1828; --surface: #2a2135; --ink: #f6eafa; --muted: #b7a3c6; --line: #3d3049;
+  --accent: #ff86aa; --accent-ink: #2a1020; --accent-soft: #46243a; --accent-deep: #ff5d8f;
+  --mint: #1f4536; --mint-ink: #8ce3b9; --butter: #4a4020; --lilac: #3a2f55; --sky: #213a52;
+  --margin: #ff86aa; --seyes: #4a3a56; --seyes-faint: #352a40;
+  --sun: #ffd36e; --sun-soft: #43381c; --ok: #8ce3b9; --ok-soft: #1c3b2d;
+  --warn: #ff8fa3; --warn-soft: #4a1f2a; --check: #ffd36e; --check-soft: #3d3218;
+  --d1: #7a3f4a; --d2: #7f4d3a; --d3: #7a5d32; --d4: #6f6630; --d5: #4f6a35;
+  --d-ink: #fff2f6;
+  --shadow: 0 4px 0 #160f1d;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background-color: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.55; font-weight: 500;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 calc(100px + env(safe-area-inset-bottom, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; text-wrap: balance; margin: 0; line-height: 1.2; color: var(--ink); }
+h1 { font-size: 1.3rem; white-space: nowrap; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1rem; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+.small { font-size: .86rem; }
+.label { font-family: var(--f-body); font-size: .74rem; font-weight: 800; letter-spacing: .06em; color: var(--accent-deep); }
+
+/* Header with the lunchbox mascot */
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+  padding-block: 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.brand { display: flex; align-items: center; gap: 8px; flex: none; }
+.brand-mark { width: 44px; height: 40px; flex: none; }
+.brand-mark svg { width: 44px; height: 40px; display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .brand-mark svg { animation: wobble 3.2s ease-in-out infinite; transform-origin: 50% 90%; }
+  @keyframes wobble { 0%, 100% { transform: rotate(0); } 8% { transform: rotate(-6deg); } 16% { transform: rotate(5deg); } 24% { transform: rotate(0); } }
+}
+.stamp {
+  display: inline-block; font-family: var(--f-display); font-size: .62rem; color: var(--accent-ink); background: var(--accent);
+  border-radius: 999px; padding: 2px 7px; margin-left: 6px; transform: rotate(-8deg) translateY(-6px);
+}
+#foyer-pill { min-width: 0; flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; display: block; }
+
+.chip-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip {
+  border: 2px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px;
+  padding: 5px 13px; font: 700 .86rem var(--f-body); cursor: pointer; transition: transform .15s, background .15s;
+}
+.chip:hover { transform: translateY(-1px); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); box-shadow: 0 3px 0 var(--accent-deep); }
+.chip:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, label:focus-within, summary:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+.pill { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; border-radius: 999px; padding: 2px 10px; font-size: .76rem; font-weight: 800; }
+.pill.ok { background: var(--mint); color: var(--mint-ink); }
+.pill.ok::before { content: "✿"; font-size: .8em; }
+.pill.warn { background: var(--warn-soft); color: var(--warn); white-space: normal; }
+.pill.check { background: var(--check-soft); color: var(--check); }
+.pill.meal { background: var(--butter); color: var(--ink); font-weight: 700; }
+.pill.perso { background: var(--lilac); color: var(--ink); }
+
+.btn {
+  appearance: none; border: 0; border-radius: 999px; padding: 11px 20px; font: 800 .95rem var(--f-body);
+  background: var(--accent); color: var(--accent-ink); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  box-shadow: 0 4px 0 var(--accent-deep); transition: transform .1s, box-shadow .1s;
+}
+.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--accent-deep); }
+.btn.ghost { background: var(--surface); color: var(--accent-deep); box-shadow: 0 3px 0 var(--line); border: 2px solid var(--line); }
+.btn.add { background: var(--accent-soft); color: var(--accent-deep); box-shadow: 0 3px 0 var(--line); }
+.btn.danger { background: var(--warn); color: #fff; box-shadow: 0 4px 0 #9e1f36; }
+.btn.small { padding: 7px 13px; font-size: .84rem; }
+.btn:disabled { opacity: .5; cursor: default; transform: none; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.between { justify-content: space-between; }
+
+.idea { background: var(--surface); border-radius: var(--r); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
+.idea-band { background: var(--sun); height: 8px; }
+.idea-body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.ingr { margin: 0; padding-left: 1.2em; display: grid; gap: 3px; }
+.ingr li::marker { content: "✦ "; color: var(--accent); font-size: .8em; }
+.empty { border: 2.5px dashed var(--line); border-radius: var(--r); padding: 24px; display: flex; flex-direction: column; gap: 10px; background: var(--surface); }
+
+/* Week: pastel versions of the menu day bands */
+.week { display: grid; grid-template-columns: auto repeat(5, 1fr) auto; gap: 6px; align-items: stretch; }
+.week .nav { appearance: none; border: 0; background: var(--surface); color: var(--accent-deep); width: 30px; font: 800 1.2rem var(--f-body); cursor: pointer; border-radius: 999px; box-shadow: 0 3px 0 var(--line); }
+.week .nav:disabled { opacity: .3; cursor: default; }
+.day {
+  appearance: none; border: 0; border-radius: 18px; padding: 8px 2px 9px; cursor: pointer; font: inherit;
+  display: flex; flex-direction: column; align-items: center; gap: 0; position: relative;
+  background: var(--surface); color: var(--ink); box-shadow: 0 3px 0 var(--line), inset 0 0 0 2px var(--dc);
+  transition: transform .2s cubic-bezier(.3,1.6,.5,1);
+}
+.day .dn { font-size: .66rem; font-weight: 800; letter-spacing: .04em; text-transform: lowercase; color: var(--muted); }
+.day .dd { font-family: var(--f-display); font-size: 1.3rem; line-height: 1.15; }
+.day[aria-pressed="true"] { background: var(--dc); color: var(--d-ink); transform: translateY(-4px) scale(1.04); box-shadow: 0 4px 0 var(--line); }
+.day[aria-pressed="true"] .dn { color: var(--d-ink); }
+.day:disabled { opacity: .35; cursor: default; }
+.day .today { position: absolute; bottom: 3px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.day .ready { position: absolute; top: -8px; right: -5px; width: 21px; height: 21px; border-radius: 50%; background: var(--ok); color: #fff; font-size: .7rem; font-weight: 900; display: grid; place-items: center; border: 2.5px solid var(--bg); }
+.menu-card { background: var(--surface); border-radius: var(--r); box-shadow: var(--shadow); overflow: hidden; }
+.menu-head { padding: 14px 18px; background: var(--dc); color: var(--d-ink); display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.menu-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 16px; }
+.menu-sec { display: flex; flex-direction: column; gap: 10px; }
+.menu-sec > h3 { font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+.menu-sec > h3::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 16px 0 0 var(--sun), 32px 0 0 var(--mint); margin-right: 34px; }
+.items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.items li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; padding-bottom: 6px; border-bottom: 2px dotted var(--line); }
+.items li:last-child { border-bottom: 0; padding-bottom: 0; }
+.items .course { font-size: .72rem; font-weight: 800; color: var(--muted); width: 100%; }
+.match { display: flex; flex-direction: column; gap: 10px; }
+
+/* Canteen menu as inspiration: a little speech bubble */
+.inspi { position: relative; background: var(--dc); color: var(--d-ink); border-radius: var(--r); padding: 14px 18px; display: flex; flex-direction: column; gap: 6px; }
+.inspi::after { content: ""; position: absolute; left: 34px; bottom: -10px; width: 20px; height: 20px; background: var(--dc); transform: rotate(45deg); border-radius: 4px; }
+.inspi .label { color: var(--d-ink); opacity: .8; }
+.inspi .muted { color: var(--d-ink); opacity: .75; }
+.inspi strong { font-weight: 800; }
+.inspi .pill.meal { background: var(--surface); }
+
+.theme { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border-radius: var(--r); background: var(--surface); box-shadow: var(--shadow); }
+.theme > .label, .theme > .row.between .label { display: inline-flex; align-self: flex-start; background: var(--accent-soft); padding: 2px 10px; border-radius: 999px; }
+.quick { display: flex; flex-direction: column; }
+.quick .pick { padding: 6px 0; border-bottom: 2px dotted var(--line); }
+.quick .pick:last-child { border-bottom: 0; }
+.pick { display: flex; gap: 10px; align-items: center; }
+.pick > .mini, .pick > .qtext, .pick > input { flex: 1; min-width: 0; }
+form.pick { flex-direction: row; gap: 10px; }
+form.pick input[type="text"] { padding: 8px 14px; }
+.qtext { font-weight: 700; }
+.mini { appearance: none; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer; background: transparent; border: 0; padding: 6px 0; display: flex; flex-direction: column; gap: 3px; }
+.mini strong { font-weight: 800; font-size: 1rem; line-height: 1.3; }
+.mini:hover strong { color: var(--accent-deep); }
+.mini .row { gap: 5px; }
+.ai-out { background: var(--lilac); border-radius: var(--r); padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+
+/* The bag: a two-compartment bento box */
+.sac {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 14px; border-radius: 26px;
+  background: var(--accent); box-shadow: 0 6px 0 var(--accent-deep);
+}
+.sac > *:not(.sac-sec) { grid-column: 1 / -1; }
+.sac > .row.between { padding: 2px 6px 4px; }
+.sac > .row.between h3 { font-family: var(--f-display); font-size: 1.15rem; color: var(--accent-ink); }
+.sac > .row.between h3::after { content: " ♡"; }
+.sac.pret > .row.between .pill.ok { background: var(--sun); color: var(--ink); transform: rotate(6deg); font-family: var(--f-display); font-weight: 400; padding: 4px 12px; box-shadow: 0 3px 0 rgba(0,0,0,.12); }
+.sac.pret > .row.between .pill.ok::before { content: "★"; }
+.sac-sec { background: var(--surface); border-radius: 18px; padding: 12px 12px 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; min-height: 120px; }
+.sac-sec:nth-child(2) { background: var(--mint); }
+.sac-sec:nth-child(3) { background: var(--butter); }
+.sac-sec > .label { color: var(--ink); font-family: var(--f-display); font-weight: 400; font-size: .82rem; letter-spacing: 0; }
+.sac-sec > p.muted { font-family: var(--f-hand); color: var(--ink); opacity: .6; }
+.sac-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.sac-list li { display: flex; align-items: center; justify-content: space-between; gap: 4px; background: var(--surface); border-radius: 12px; padding: 5px 4px 5px 10px; font-family: var(--f-hand); font-size: 1.02rem; line-height: 1.25; color: var(--ink); }
+.sac-list li > :first-child { min-width: 0; overflow-wrap: anywhere; }
+.linkish { appearance: none; background: none; border: 0; padding: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.linkish .voir { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-deep); font-size: .72rem; font-weight: 800; white-space: nowrap; vertical-align: 2px; }
+.x { appearance: none; border: 0; background: var(--accent-soft); color: var(--accent-deep); font: 800 1rem var(--f-body); line-height: 1; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; flex: none; }
+.sac-form { gap: 10px; background: var(--surface); border-radius: 18px; padding: 12px; }
+.sac-form input[type="text"] { font-family: var(--f-hand); font-size: 1.05rem; }
+.sac > .row:last-child .btn { background: var(--surface); color: var(--accent-deep); box-shadow: 0 4px 0 var(--accent-deep); }
+@media (max-width: 520px) { .sac { grid-template-columns: 1fr; } .sac-sec { min-height: 0; } }
+
+/* Food stickers */
+.ficon { width: 34px; height: 34px; flex: none; display: inline-block; filter: drop-shadow(0 2px 0 rgba(62,43,79,.12)); }
+.ficon svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.ficon.sm { width: 26px; height: 26px; }
+.ficon.lg { width: 42px; height: 42px; }
+.ficon.xl { width: 58px; height: 58px; }
+.ficon.photo { border-radius: 30%; overflow: hidden; background: var(--accent-soft); box-shadow: 0 0 0 2.5px var(--surface), 0 0 0 4px var(--line); filter: none; }
+.ficon.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card > .ficon.photo { width: 58px; height: 58px; }
+.hero-photo { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 22px; box-shadow: 0 4px 0 var(--line); background: var(--accent-soft); }
+.hero { margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.hero figcaption { font-size: .7rem; padding-left: 6px; overflow-wrap: anywhere; }
+.photo-pick { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.photo-pick input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.photo-apercu { width: 84px; height: 84px; flex: none; border-radius: 20px; background: var(--accent-soft); border: 2px dashed var(--line); display: grid; place-items: center; overflow: hidden; text-align: center; padding: 4px; }
+.photo-apercu img { width: 84px; height: 84px; object-fit: cover; }
+.mini { flex-direction: row; align-items: center; gap: 10px; }
+.mini-txt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.sac-list li { justify-content: flex-start; }
+.sac-list li > .ficon + * { flex: 1; }
+.sac-list li > :first-child { min-width: auto; }
+@media (prefers-reduced-motion: no-preference) {
+  .card:hover .ficon, .mini:hover .ficon { animation: boing .5s cubic-bezier(.3,1.6,.5,1); }
+  @keyframes boing { 0% { transform: scale(1); } 40% { transform: scale(1.15) rotate(-6deg); } 100% { transform: scale(1); } }
+}
+
+/* Week view */
+.vue-toggle { margin-top: -4px; }
+.sem-nav { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; }
+.sem-nav .nav { appearance: none; border: 0; background: var(--surface); color: var(--accent-deep); width: 34px; height: 34px; font: 800 1.2rem var(--f-body); cursor: pointer; border-radius: 999px; box-shadow: 0 3px 0 var(--line); }
+.sem-nav .nav:disabled { opacity: .3; cursor: default; }
+.sem-bilan { display: flex; flex-direction: column; gap: 5px; align-items: center; font-family: var(--f-display); font-size: .95rem; color: var(--accent-deep); }
+.sem-barre { display: block; width: 100%; height: 10px; border-radius: 999px; background: var(--surface); box-shadow: inset 0 0 0 2px var(--line); overflow: hidden; }
+.sem-barre > span { display: block; height: 100%; background: var(--ok); border-radius: 999px; transition: width .4s; }
+.sem-jour { background: var(--surface); border-radius: var(--r); box-shadow: 0 3px 0 var(--line); padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 10px; border-left: 8px solid var(--dc); }
+.sem-jour.pret { box-shadow: 0 3px 0 var(--line), inset 0 0 0 2px var(--ok); }
+.sem-jour.off { flex-direction: row; justify-content: space-between; align-items: center; opacity: .6; border-left-color: var(--line); padding: 10px 14px; }
+.sem-tete { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.sem-nom { font-family: var(--f-display); font-size: 1rem; }
+.sem-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sem-list { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: .9rem; font-weight: 700; }
+.sem-list li { display: flex; align-items: center; gap: 6px; min-width: 0; overflow-wrap: anywhere; }
+.sem-cantine { margin: 0; color: var(--muted); font-family: var(--f-hand); }
+/* Ajouter helpers */
+.aides { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.aides .label { grid-column: 1 / -1; }
+.aide { appearance: none; text-align: left; font: inherit; color: var(--ink); cursor: pointer; background: var(--sky); border: 0; border-radius: var(--r); padding: 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; box-shadow: var(--shadow); transition: transform .2s cubic-bezier(.3,1.6,.5,1); }
+.aide + .aide { background: var(--lilac); }
+.aide:hover { transform: translateY(-2px) rotate(-1deg); }
+.aide svg { width: 24px; height: 24px; color: var(--accent-deep); }
+.aide .spark { color: var(--accent-deep); font-size: 1.3rem; line-height: 1; }
+.aide strong { font-family: var(--f-display); font-weight: 400; font-size: .95rem; line-height: 1.3; }
+details summary { cursor: pointer; font-weight: 800; color: var(--accent-deep); }
+details[open] summary { margin-bottom: 8px; }
+@media (max-width: 360px) { .aides { grid-template-columns: 1fr; } }
+
+/* Carnet */
+.search { width: 100%; padding: 12px 18px; border-radius: 999px; border: 2px solid var(--line); background: var(--surface); color: var(--ink); font: 600 1rem var(--f-body); }
+.list { display: flex; flex-direction: column; gap: 8px; }
+.list > p.muted { font-weight: 800; font-size: .8rem; padding-left: 6px; }
+.card {
+  background: var(--surface); border: 0; border-radius: 18px; padding: 13px 16px; box-shadow: 0 3px 0 var(--line);
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 5px 12px; cursor: pointer; text-align: left; width: 100%; color: inherit; font: inherit;
+  transition: transform .2s cubic-bezier(.3,1.6,.5,1);
+}
+.card:hover { transform: translateY(-2px); }
+.card > .ficon { grid-row: span 2; }
+.card .meta { grid-column: 2 / -1; display: flex; flex-wrap: wrap; gap: 5px; }
+.card h3 { min-width: 0; text-align: left; align-self: end; overflow-wrap: anywhere; font-family: var(--f-body); font-weight: 800; font-size: 1.04rem; }
+.card .pill.ok { display: none; }
+.fav { color: var(--sun); font-size: 1.25rem; line-height: 1; }
+
+/* Forms */
+form { display: flex; flex-direction: column; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label, .field .label-like { font-weight: 800; }
+input[type="text"], input[type="number"], input[type="search"], textarea {
+  width: 100%; padding: 11px 14px; border-radius: 16px; border: 2px solid var(--line); background: var(--surface); color: var(--ink); font: 600 1rem var(--f-body);
+}
+input:focus, textarea:focus { border-color: var(--accent); }
+textarea { min-height: 120px; resize: vertical; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.check-box { border-radius: 16px; padding: 12px 14px; font-size: .93rem; display: flex; flex-direction: column; gap: 3px; }
+.check-box.ok { background: var(--mint); color: var(--mint-ink); }
+.check-box.warn { background: var(--warn-soft); color: var(--warn); }
+
+/* Allergens */
+.allergen-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(146px, 1fr)); gap: 8px; }
+.allergen { display: flex; align-items: center; gap: 10px; border: 2px solid var(--line); background: var(--surface); border-radius: 999px; padding: 8px 14px; cursor: pointer; font-weight: 800; }
+.allergen input { width: 18px; height: 18px; accent-color: var(--accent); flex: none; }
+.allergen:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-deep); }
+.group-title { margin-top: 8px; }
+.notice { background: var(--sun-soft); border-radius: 16px; padding: 12px 16px; font-size: .9rem; }
+
+/* Scan */
+.drop { position: relative; border: 2.5px dashed var(--accent); border-radius: var(--r); padding: 22px 16px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; cursor: pointer; color: var(--accent-deep); background: var(--accent-soft); }
+.drop strong { font-family: var(--f-display); font-weight: 400; }
+.drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.thumbs { display: flex; gap: 8px; flex-wrap: wrap; }
+.thumbs img { width: 84px; height: 84px; object-fit: cover; border-radius: 16px; }
+.preview { max-height: 320px; overflow-y: auto; border: 2px solid var(--line); border-radius: 16px; }
+.preview div { padding: 8px 12px; border-bottom: 2px dotted var(--line); font-size: .9rem; }
+.preview div:last-child { border-bottom: 0; }
+.spinner { width: 20px; height: 20px; border-radius: 50%; border: 3px solid var(--accent-soft); border-top-color: var(--accent); flex: none; }
+@media (prefers-reduced-motion: no-preference) { .spinner { animation: spin .9s linear infinite; } @keyframes spin { to { transform: rotate(360deg); } } }
+
+/* Bottom tabs: a floating rounded bar */
+nav.tabs {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
+  padding: 0 max(12px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+  display: flex; justify-content: center; pointer-events: none;
+}
+nav.tabs .inner { pointer-events: auto; display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; max-width: 560px; background: var(--surface); border-radius: 26px; box-shadow: 0 4px 0 var(--line), 0 10px 30px -10px rgba(62,43,79,.25); padding: 6px; }
+nav.tabs button {
+  appearance: none; background: none; border: 0; padding: 8px 2px 7px; color: var(--muted); font: 800 .7rem var(--f-body); border-radius: 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; transition: background .15s;
+}
+nav.tabs button svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: var(--accent-soft); }
+
+/* Sheet */
+.sheet-back { position: fixed; inset: 0; background: rgba(62,43,79,.4); z-index: 20; display: flex; align-items: flex-end; justify-content: center; }
+.sheet {
+  background: var(--surface); width: 100%; max-width: 600px; max-height: 90%; overflow-y: auto; border-radius: 28px 28px 0 0;
+  padding: 26px max(18px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(18px, env(safe-area-inset-left, 0px));
+  display: flex; flex-direction: column; gap: 14px; position: relative;
+}
+.sheet::before { content: ""; position: absolute; top: 10px; left: 50%; width: 44px; height: 5px; margin-left: -22px; border-radius: 3px; background: var(--line); }
+.steps { white-space: pre-wrap; overflow-wrap: anywhere; }
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(104px + env(safe-area-inset-bottom, 0px)); z-index: 30;
+  background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-weight: 800; font-size: .9rem; max-width: calc(100% - 32px);
+}
+@media (max-width: 380px) { .two { grid-template-columns: 1fr; } .week .nav { width: 24px; } }
+@media (prefers-reduced-motion: no-preference) {
+  .sac, .inspi { animation: pop .45s cubic-bezier(.3,1.5,.5,1); }
+  @keyframes pop { from { transform: scale(.96); } to { transform: none; } }
+}
+.login { display: grid; gap: 14px; justify-items: center; text-align: center; padding: 40px 8px; }
+.login .btn { min-width: 240px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 44 40"><rect x="3" y="13" width="38" height="24" rx="9" fill="var(--accent)"/><rect x="3" y="13" width="38" height="24" rx="9" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M6 13c0-4 3-7 7-7h18c4 0 7 3 7 7" fill="var(--sun)" stroke="var(--ink)" stroke-width="2"/><rect x="17" y="3" width="10" height="5" rx="2.5" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="15" cy="24" r="2.2" fill="var(--ink)"/><circle cx="29" cy="24" r="2.2" fill="var(--ink)"/><path d="M19.5 27.5c1.5 1.6 3.5 1.6 5 0" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><ellipse cx="11" cy="29" rx="2.6" ry="1.6" fill="#ffd0dc"/><ellipse cx="33" cy="29" rx="2.6" ry="1.6" fill="#ffd0dc"/></svg>
+      </div>
+      <h1>Recettes<span class="stamp">PAI</span></h1>
+    </div>
+    <span id="foyer-pill" class="pill ok" hidden></span>
+  </header>
+  <div id="banner" class="notice" hidden></div>
+  <main id="view"></main>
+</div>
+
+<nav class="tabs" aria-label="Navigation">
+  <div class="inner">
+    <button data-tab="cantine" aria-current="page"><svg viewBox="0 0 24 24"><path d="M4 9h16v10a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19V9Z"/><path d="M4 9l2-4h12l2 4"/><path d="M9.5 5V3.5h5V5"/></svg>Panier</button>
+    <button data-tab="recettes"><svg viewBox="0 0 24 24"><path d="M6 3.5h12a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1Z"/><path d="M8.5 3.5v17"/><path d="M11.5 8h4.5M11.5 11.5h4.5"/></svg>Carnet</button>
+    <button data-tab="ajouter"><svg viewBox="0 0 24 24"><path d="M14.5 4.5l5 5L9 20H4v-5L14.5 4.5Z"/><path d="M12.5 6.5l5 5"/></svg>Ajouter</button>
+    <button data-tab="reglages"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 7.7 7.5 9 4.3-1.3 7.5-4.4 7.5-9V6L12 3Z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>Allergènes</button>
+  </div>
+</nav>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  // ---------- Reference data ----------
+  // Patterns are matched against lower-case text with accents removed.
+  const NUTS_GENERIC = "fruits? a coque";
+  const ALLERGENES = [
+    { id: "pistache", nom: "Pistache", groupe: "Fruits à coque", motifs: ["pistache", NUTS_GENERIC] },
+    { id: "cajou", nom: "Noix de cajou", groupe: "Fruits à coque", motifs: ["cajou", "cashew", NUTS_GENERIC] },
+    { id: "noix", nom: "Noix", groupe: "Fruits à coque", motifs: ["\\bnoix\\b(?! de (coco|muscade|cajou|saint))", NUTS_GENERIC] },
+    { id: "noisette", nom: "Noisette", groupe: "Fruits à coque", motifs: ["noisette", "praline", "gianduja", "nutella", "pate a tartiner", NUTS_GENERIC] },
+    { id: "amande", nom: "Amande", groupe: "Fruits à coque", motifs: ["amande", "frangipane", "massepain", "orgeat", "calisson", NUTS_GENERIC] },
+    { id: "pecan", nom: "Noix de pécan", groupe: "Fruits à coque", motifs: ["pecan", NUTS_GENERIC] },
+    { id: "macadamia", nom: "Macadamia", groupe: "Fruits à coque", motifs: ["macadamia", NUTS_GENERIC] },
+    { id: "bresil", nom: "Noix du Brésil", groupe: "Fruits à coque", motifs: ["bresil", NUTS_GENERIC] },
+    { id: "arachide", nom: "Arachide", groupe: "Autres allergènes majeurs", motifs: ["arachide", "cacahu", "peanut"] },
+    { id: "gluten", nom: "Gluten", groupe: "Autres allergènes majeurs", motifs: ["\\bble\\b", "farine", "\\bpain", "\\bpates?\\b(?! a tartiner| d'amande)", "semoule", "\\borge\\b", "seigle", "epeautre", "biscuit", "chapelure", "brioche", "gluten", "boulgour", "couscous", "farfalle", "penne", "pizza", "pane\\b"] },
+    { id: "lait", nom: "Lait", groupe: "Autres allergènes majeurs", motifs: ["\\blait", "beurre(?! de cacahu)", "creme", "fromage", "yaourt", "yogourt", "mascarpone", "ricotta", "emmental", "gruyere", "mozzarella", "chantilly", "parmesan", "comte\\b", "camembert", "brie\\b", "cantal", "mimolette", "edam", "gouda", "livarot", "petits?-suisses?", "chanteneige", "tartare"] },
+    { id: "oeuf", nom: "Œufs", groupe: "Autres allergènes majeurs", motifs: ["\\boeufs?\\b", "mayonnaise", "meringue", "madeleine", "remoulade"] },
+    { id: "poisson", nom: "Poisson", groupe: "Autres allergènes majeurs", motifs: ["poisson", "saumon", "thon", "cabillaud", "sardine", "colin", "anchois", "merlu", "hoki"] },
+    { id: "crustaces", nom: "Crustacés", groupe: "Autres allergènes majeurs", motifs: ["crevette", "crabe", "homard", "langoust", "gambas", "ecrevisse", "armoricaine"] },
+    { id: "mollusques", nom: "Mollusques", groupe: "Autres allergènes majeurs", motifs: ["\\bmoules?\\b", "calamar", "huitre", "poulpe", "seiche", "saint-jacques", "encornet"] },
+    { id: "soja", nom: "Soja", groupe: "Autres allergènes majeurs", motifs: ["soja", "tofu", "edamame", "miso", "tamari"] },
+    { id: "sesame", nom: "Sésame", groupe: "Autres allergènes majeurs", motifs: ["sesame", "tahin", "houmous", "hummus"] },
+    { id: "moutarde", nom: "Moutarde", groupe: "Autres allergènes majeurs", motifs: ["moutarde", "vinaigrette", "remoulade"] },
+    { id: "celeri", nom: "Céleri", groupe: "Autres allergènes majeurs", motifs: ["celeri"] },
+    { id: "lupin", nom: "Lupin", groupe: "Autres allergènes majeurs", motifs: ["lupin"] },
+    { id: "sulfites", nom: "Sulfites", groupe: "Autres allergènes majeurs", motifs: ["sulfite", "\\bvin\\b", "fruits secs", "bourguignon"] }
+  ];
+  const BY_ID = Object.fromEntries(ALLERGENES.map(a => [a.id, a]));
+  const DEFAULT_ALLERGENES = ["pistache", "cajou"];
+  // Same courses as the school menu: no breakfast there.
+  const REPAS = [
+    { id: "entree", nom: "Entrée" },
+    { id: "plat", nom: "Plat" },
+    { id: "dessert", nom: "Dessert" },
+    { id: "gouter", nom: "Goûter" }
+  ];
+  const REPAS_NOM = Object.fromEntries(REPAS.map(r => [r.id, r.nom]));
+
+  // ---------- Kawaii food stickers (drawn here, 40×40) ----------
+  const O = 'stroke="#3e2b4f" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"';
+  function visage(x, y, k) {
+    k = k || 1;
+    return `<g transform="translate(${x} ${y}) scale(${k})"><circle cx="-3.6" cy="0" r="1.3" fill="#3e2b4f"/><circle cx="3.6" cy="0" r="1.3" fill="#3e2b4f"/>` +
+      `<path d="M-1.6 1.9q1.6 1.5 3.2 0" fill="none" stroke="#3e2b4f" stroke-width="1.2" stroke-linecap="round"/>` +
+      `<ellipse cx="-6.2" cy="2.5" rx="1.8" ry="1.1" fill="#ff8fab" opacity=".8"/><ellipse cx="6.2" cy="2.5" rx="1.8" ry="1.1" fill="#ff8fab" opacity=".8"/></g>`;
+  }
+  function bol(dessus) {
+    return dessus + `<path d="M6 20h28a14 13 0 0 1-28 0z" fill="#ffb3c7" ${O}/>` + visage(20, 27, .85);
+  }
+  const DOME = c => `<path d="M8 20c0-7 5-10 12-10s12 3 12 10z" fill="${c}" ${O}/>`;
+  const ICONES = {
+    pomme: `<path d="M20 13c-4-3-12-2-12 8 0 8 6 13 12 11 6 2 12-3 12-11 0-10-8-11-12-8z" fill="#ff7a8a" ${O}/><path d="M20 13c0-3 1-5 3-6" fill="none" ${O}/><path d="M22 9c2-3 6-3 7-2-1 3-5 4-7 2z" fill="#8bd48b" ${O}/>` + visage(20, 22),
+    poire: `<path d="M20 8c3 0 4 3 4 6 0 3 7 6 7 12 0 6-5 8-11 8s-11-2-11-8c0-6 7-9 7-12 0-3 1-6 4-6z" fill="#cfe88a" ${O}/><path d="M20 8V5" fill="none" ${O}/>` + visage(20, 25),
+    orange: `<circle cx="20" cy="22" r="12" fill="#ffad4d" ${O}/><path d="M20 10c1-3 4-4 6-3-1 3-4 4-6 3z" fill="#8bd48b" ${O}/>` + visage(20, 23),
+    banane: `<path d="M9 10c0 13 10 21 23 17 2-1 1-4-1-3-10 2-17-5-18-14 0-2-4-2-4 0z" fill="#ffd95a" ${O}/>` + visage(18, 21, .75),
+    fraise: `<path d="M20 34c-8-4-13-12-11-18 2-4 7-4 11-2 4-2 9-2 11 2 2 6-3 14-11 18z" fill="#ff6f8a" ${O}/><path d="M13 12l3-4 4 3 4-3 3 4-7 2z" fill="#7ccf7c" ${O}/><g fill="#ffe08a"><circle cx="13" cy="19" r=".9"/><circle cx="27" cy="19" r=".9"/><circle cx="16" cy="28" r=".9"/><circle cx="24" cy="28" r=".9"/><circle cx="20" cy="31" r=".9"/></g>` + visage(20, 21),
+    pasteque: `<path d="M4 14h32a16 16 0 0 1-32 0z" fill="#7ccf7c" ${O}/><path d="M7 14h26a13 13 0 0 1-26 0z" fill="#ff7a8a"/><g fill="#3e2b4f"><ellipse cx="11" cy="21" rx=".8" ry="1.2"/><ellipse cx="29" cy="21" rx=".8" ry="1.2"/><ellipse cx="20" cy="25" rx=".8" ry="1.2"/></g>` + visage(20, 18),
+    avocat: `<path d="M20 5c6 0 9 8 11 14 2 8-3 15-11 15S7 27 9 19C11 13 14 5 20 5z" fill="#8bc472" ${O}/><path d="M20 9c4 0 6 6 8 11 1 6-3 10-8 10s-9-4-8-10c2-5 4-11 8-11z" fill="#e6f3a8"/><circle cx="20" cy="22" r="5.5" fill="#c98a5a" ${O}/>` + visage(20, 22, .6),
+    carotte: `<path d="M20 36c-2 0-9-17-9-21 0-3 4-4 9-4s9 1 9 4c0 4-7 21-9 21z" fill="#ff9f43" ${O}/><path d="M20 11c-2-4-5-5-7-4 1 3 4 4 7 4zm0 0c2-4 5-5 7-4-1 3-4 4-7 4zm0 0V5" fill="#7ccf7c" ${O}/>` + visage(20, 19),
+    tomate: `<circle cx="20" cy="22" r="12" fill="#ff6b6b" ${O}/><path d="M14 12l3 1 3-3 3 3 3-1-2 4h-8z" fill="#7ccf7c" ${O}/>` + visage(20, 24),
+    oeuf: `<path d="M7 22c-2-8 5-14 12-12 8-3 16 4 13 12 2 8-6 12-13 10-7 3-14-3-12-10z" fill="#ffffff" ${O}/><circle cx="20" cy="21" r="6.5" fill="#ffc94d" ${O}/>` + visage(20, 21, .7),
+    pain: `<g transform="rotate(-18 20 20)"><rect x="4" y="13" width="32" height="14" rx="7" fill="#f0a65e" ${O}/><path d="M11 15.5l2.5 3M18.5 15.5l2.5 3M26 15.5l2.5 3" fill="none" stroke="#c97a35" stroke-width="1.4" stroke-linecap="round"/></g>` + visage(20, 23, .8),
+    fromage: `<path d="M5 28L31 12l5 16z" fill="#ffd95a" ${O}/><path d="M5 28h31v4H5z" fill="#ffc533" ${O}/><circle cx="30" cy="20" r="1.6" fill="#f2a900"/><circle cx="12" cy="26" r="1.2" fill="#f2a900"/>` + visage(23, 24, .75),
+    lait: `<path d="M12 24h16v10H12z" fill="#9fd3ff"/><path d="M12 14l3-6h10l3 6v20H12z" fill="none" ${O}/><path d="M12 14h16" ${O}/>` + visage(20, 19, .85),
+    eau: `<rect x="13" y="10" width="14" height="25" rx="6" fill="#9fd3ff" ${O}/><rect x="15" y="5" width="10" height="5" rx="2" fill="#ff8fab" ${O}/>` + visage(20, 22, .85),
+    chocolat: `<rect x="10" y="6" width="20" height="28" rx="3" fill="#8a5a44" ${O}/><path d="M10 13h20M20 6v14" stroke="#6b4433" stroke-width="1.3"/><path d="M10 20h20v12a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2z" fill="#ff8fab" ${O}/>` + visage(20, 27, .85),
+    gateau: `<path d="M10 22h20l-3 13H13z" fill="#ff9fbf" ${O}/><path d="M9 22c-2-6 3-9 6-8 1-4 9-4 10 0 3-1 8 2 6 8z" fill="#fff4e6" ${O}/><circle cx="20" cy="9.5" r="2.6" fill="#ff5d7a" ${O}/>` + visage(20, 28, .72),
+    cookie: `<circle cx="20" cy="20" r="13" fill="#e8b26e" ${O}/><g fill="#6b4433"><circle cx="13" cy="14" r="1.6"/><circle cx="27" cy="13" r="1.4"/><circle cx="28" cy="27" r="1.6"/><circle cx="12" cy="27" r="1.3"/></g>` + visage(20, 21),
+    yaourt: `<path d="M10 14h20l-3 20H13z" fill="#ffffff" ${O}/><path d="M9 10h22v4H9z" fill="#c8b6ff" ${O}/>` + visage(20, 22, .85),
+    compote: `<path d="M12 12h16l1 20c0 2-2 3-4 3H15c-2 0-4-1-4-3z" fill="#a8e6a1" ${O}/><rect x="17" y="5" width="6" height="7" rx="1.5" fill="#ff8fab" ${O}/>` + visage(20, 23),
+    poulet: `<path d="M24 22l6 6" stroke="#3e2b4f" stroke-width="5.4" stroke-linecap="round"/><path d="M24 22l6 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="32" cy="29" r="2.6" fill="#fff" ${O}/><circle cx="29.5" cy="31.5" r="2.6" fill="#fff" ${O}/><path d="M7 17c0-7 6-11 12-10s10 6 8 13c-2 6-8 7-12 6-5-1-8-4-8-9z" fill="#d98b4a" ${O}/>` + visage(17, 17, .8),
+    poisson: `<path d="M30 20l7-6v12z" fill="#7cc4ff" ${O}/><ellipse cx="18" cy="20" rx="13" ry="9" fill="#9fd3ff" ${O}/>` + visage(15, 20, .8),
+    viande: `<path d="M8 15c2-6 12-8 19-5s9 11 4 16-17 6-21 2c-3-3-4-8-2-13z" fill="#e07a6a" ${O}/><path d="M24 13c3 0 5 2 5 4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>` + visage(18, 21, .85),
+    riz: bol(DOME("#ffffff")),
+    pates: bol(DOME("#ffd95a") + `<path d="M12 17c2-3 4 0 6-3s4 0 6-3 4 1 5 2" fill="none" stroke="#e8b400" stroke-width="1.3" stroke-linecap="round"/>`),
+    houmous: bol(DOME("#f3d7a6") + `<path d="M15 16c2-3 8-3 10 0" fill="none" stroke="#b8935a" stroke-width="1.3" stroke-linecap="round"/><circle cx="20" cy="13.5" r="1.4" fill="#7ccf7c"/>`),
+    soupe: bol(`<ellipse cx="20" cy="20" rx="14" ry="3.6" fill="#ffad4d" ${O}/>`)
+  };
+  const ICONE_MOTS = [
+    ["eau", /gourde d'eau|\beau\b/], ["compote", /compote|puree de pomme/],
+    ["yaourt", /yaourt|yogourt|fromage blanc|petits?-suisses?|labne|creme dessert|creme a la|panna|flan|mouhalab|riz au lait|riz bi halib|meghli|semoule au lait|gateau de semoule/],
+    ["lait", /\blait\b/], ["cookie", /cookie|sable|biscuit|galette avoine|galettes avoine/],
+    ["chocolat", /chocolat|cacao/],
+    ["gateau", /gateau|cake|moelleux|madeleine|muffin|quatre-quarts|marbre|clafoutis|tarte|sfouf|namoura|maamoul|brioche|gaufre|pancake|crepe|beignet|pain perdu|briochee|banana bread/],
+    ["fromage", /fromage|emmental|camembert|cantal|brie|mozza|gouda|edam|mimolette/],
+    ["oeuf", /\boeufs?\b|omelette|ijje|mimosa|tortilla/],
+    ["poisson", /poisson|saumon|colin|thon|cabillaud|merlu|hoki/],
+    ["poulet", /poulet|dinde|nugget|chich|shawarma|volaille/],
+    ["viande", /boeuf|kafta|kebbe|boulette|steak|hachis|sfiha|viande|agneau|chili|lasagne|bolognaise(?! de lentilles)/],
+    ["soupe", /soupe|veloute|gaspacho/],
+    ["houmous", /houmous|moutabal|pois chiche|falafel|mjadara|lentille|fasolia|haricots? blanc|toum/],
+    ["pates", /\bpates?\b|farfalle|penne|gnocchi|macaroni|spaghetti/],
+    ["riz", /\briz\b|couscous|semoule|boulgour|taboule|moghrabieh/],
+    ["pain", /\bpain|tartine|baguette|pita|wrap|sandwich|croque|pizza|manouche|fatayer|ka'ak|quiche/],
+    ["carotte", /carotte/], ["banane", /banane/], ["fraise", /fraise/], ["pasteque", /pasteque/], ["avocat", /avocat/], ["poire", /poire/],
+    ["orange", /clementine|orange|citron/],
+    ["tomate", /tomate|salade|fattouche|crudite|concombre|radis|chou|celeri|betterave|courgette|aubergine|ratatouille|haricot|epinard|legume|loubieh|bamia|vigne|mais/],
+    ["pomme", /pomme|fruit/]
+  ];
+  function iconeDe(texte, cours) {
+    const n = norm(texte || "");
+    for (const [k, re] of ICONE_MOTS) if (re.test(n)) return k;
+    return { gouter: "gateau", dessert: "yaourt", entree: "tomate", plat: "riz" }[cours] || "pomme";
+  }
+  function icone(texte, cours, taille) {
+    const s = h("span", { class: "ficon" + (taille ? " " + taille : ""), "aria-hidden": "true" });
+    s.innerHTML = '<svg viewBox="0 0 40 40">' + ICONES[iconeDe(texte, cours)] + "</svg>";
+    return s;
+  }
+  function iconeRecette(r, taille) {
+    if (!r.photo) return icone(r.titre, repasDe(r)[0], taille);
+    const s = h("span", { class: "ficon photo" + (taille ? " " + taille : ""), "aria-hidden": "true" });
+    const img = h("img", { src: photoSrc(r.photo), alt: "", loading: "lazy" });
+    img.onerror = () => s.replaceWith(icone(r.titre, repasDe(r)[0], taille));
+    s.append(img);
+    return s;
+  }
+  function photoSrc(id) { return state.photoUrls[id] || (String(id).startsWith("fs:") ? "" : "photos/" + id + ".jpg"); }
+
+  // ---------- Dish photos ----------
+  // Shrink before upload: a phone photo is often 4–8 MB, 1280 px is plenty for a recipe card.
+  async function reduirePhoto(file, max = 1280, q = 0.82) {
+    const url = URL.createObjectURL(file);
+    try {
+      const img = await new Promise((ok, ko) => { const i = new Image(); i.onload = () => ok(i); i.onerror = ko; i.src = url; });
+      const k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+      const c = document.createElement("canvas");
+      c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      const blob = await new Promise(ok => c.toBlob(ok, "image/jpeg", q));
+      return blob || file;
+    } catch (e) { return file; }
+    finally { URL.revokeObjectURL(url); }
+  }
+  // A Firestore document holds at most 1 MB, so photos are kept small (900 px) and stored as data URLs.
+  async function envoyerPhoto(file) {
+    const blob = await reduirePhoto(file, 900, 0.72);
+    const data = await new Promise((ok, ko) => { const fr = new FileReader(); fr.onload = () => ok(fr.result); fr.onerror = ko; fr.readAsDataURL(blob); });
+    if (data.length > 900000) throw { code: "too_large" };
+    const ref = store.db.collection("photos").doc();
+    await ref.set({ data });
+    const id = "fs:" + ref.id;
+    state.photoUrls[id] = data;
+    return id;
+  }
+  function oublierPhoto(id) { if (id && String(id).startsWith("fs:") && store.db) store.db.collection("photos").doc(id.slice(3)).delete().catch(() => {}); }
+  function photoMsg(e) {
+    const c = e && e.code;
+    if (c === "too_large") return "Photo trop lourde. Essaie une autre photo.";
+    if (c === "unsupported_type") return "Ce format de photo n'est pas accepté. Prends une photo en JPEG ou PNG.";
+    if (c === "quota_or_state") return "Plus de place pour les photos.";
+    if (c === "rate_limited") return "Trop d'envois d'un coup. Réessaie dans un moment.";
+    return "La photo n'a pas pu être envoyée. Réessaie.";
+  }
+  function repasDe(rec) {
+    return [...new Set((rec.repas || []).map(r => r === "repas" ? "plat" : r).filter(r => REPAS_NOM[r]))];
+  }
+  const JOURS = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
+  const JOURS_LONG = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+  const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+  const DAY_VARS = ["", "var(--d1)", "var(--d2)", "var(--d3)", "var(--d4)", "var(--d5)", ""];
+
+  // ---------- State ----------
+  const state = {
+    tab: "cantine",
+    reglages: null,
+    reglagesCharges: false,
+    recettes: [],
+    recettesChargees: false,
+    menus: {},               // "2026-10" -> { mois, jours: [{date, titre?, dejeuner: [], gouter: []}] }
+    menusCharges: false,
+    paniers: {},             // "2026-10-21" -> { dejeuner: [{texte, recetteId?}], gouter: [...], pret }
+    jourSel: null,           // "YYYY-MM-DD"
+    vuePanier: "jour",       // "jour" | "semaine"
+    filtreRepas: "tous",
+    filtreListe: "tous",
+    recherche: "",
+    edition: null,
+    brouillon: null,         // recipe proposed by Claude, pre-filling the form
+    lectureSeule: false,
+    sample: null,
+    imagesOk: false,
+    assets: null,            // photo uploads (editors only)
+    photoUrls: {},           // asset id -> url returned by upload, for this view
+    decal: {}                // "date:cours" -> how many times "Autre idée" was pressed
+  };
+
+  // ---------- Storage: shared db, or this browser as a fallback ----------
+  const store = { mode: "attente", db: null };
+  const LS_KEY = "recettes-pai-local";
+  function lsRead() { try { const d = JSON.parse(localStorage.getItem(LS_KEY)) || {}; return { reglages: d.reglages || null, recettes: d.recettes || {}, menus: d.menus || {}, paniers: d.paniers || {} }; } catch (e) { return { reglages: null, recettes: {}, menus: {}, paniers: {} }; } }
+  function lsWrite(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
+
+  async function saveReglages(data) {
+    if (store.mode === "db") { await store.db.doc("reglages/foyer").set(data); }
+    else { const d = lsRead(); d.reglages = data; lsWrite(d); state.reglages = data; render(); }
+  }
+  async function saveRecette(id, data) {
+    if (store.mode === "db") {
+      const ref = id ? store.db.collection("recettes").doc(id) : store.db.collection("recettes").doc();
+      await ref.set(data);
+      return ref.id;
+    }
+    const d = lsRead(); const nid = id || ("r" + Date.now().toString(36)); d.recettes[nid] = data; lsWrite(d);
+    loadLocal(); render(); return nid;
+  }
+  async function deleteRecette(id) {
+    if (store.mode === "db") { await store.db.collection("recettes").doc(id).delete(); }
+    else { const d = lsRead(); delete d.recettes[id]; lsWrite(d); loadLocal(); render(); }
+  }
+  async function saveMenu(data) {
+    if (store.mode === "db") { await store.db.collection("menus").doc(data.mois).set(data); }
+    else { const d = lsRead(); d.menus[data.mois] = data; lsWrite(d); loadLocal(); render(); }
+  }
+  async function savePanier(date, data) {
+    if (store.mode === "db") { await store.db.collection("paniers").doc(date).set(data); }
+    else { const d = lsRead(); d.paniers[date] = data; lsWrite(d); }
+  }
+  function loadLocal() {
+    const d = lsRead();
+    state.recettes = Object.entries(d.recettes).map(([id, v]) => Object.assign({ id }, v));
+    state.menus = d.menus;
+    state.paniers = d.paniers;
+    state.recettesChargees = true; state.menusCharges = true;
+  }
+
+  // ---------- Allergen check ----------
+  function norm(s) {
+    return (s || "").toLowerCase().replace(/œ/g, "oe").replace(/æ/g, "ae").normalize("NFD").replace(/[̀-ͯ]/g, "");
+  }
+  function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+  function activeChecks() {
+    const r = state.reglages || { allergenes: DEFAULT_ALLERGENES, autres: "" };
+    const checks = (r.allergenes || []).filter(id => BY_ID[id]).map(id => ({ nom: BY_ID[id].nom, re: new RegExp(BY_ID[id].motifs.join("|"), "i") }));
+    (r.autres || "").split(/[,;\n]/).map(s => s.trim()).filter(Boolean).forEach(mot => {
+      checks.push({ nom: mot, re: new RegExp(escRe(norm(mot)), "i") });
+    });
+    return checks;
+  }
+  function nomsAllergenes() {
+    const r = state.reglages || { allergenes: DEFAULT_ALLERGENES, autres: "" };
+    return (r.allergenes || []).map(id => BY_ID[id] ? BY_ID[id].nom : id)
+      .concat((r.autres || "").split(/[,;\n]/).map(s => s.trim()).filter(Boolean));
+  }
+  // "sans fruits à coque", "sans traces de pistache": a negation, not an ingredient.
+  const SANS = /\bsans\s+(traces?\s+(de\s+|d')?)?[a-z'-]+(\s+(?!aux\b|avec\b|et\b|mais\b|ou\b)[a-z'-]+){0,3}/g;
+  function alertesTexte(lignes) {
+    const alertes = [];
+    activeChecks().forEach(c => {
+      const hit = lignes.find(l => c.re.test(norm(l).replace(SANS, " ")));
+      if (hit) alertes.push({ nom: c.nom, ligne: hit });
+    });
+    return alertes;
+  }
+  // Notes are left out: they hold reminders such as "check for nut traces", not ingredients.
+  function verifier(rec) {
+    return { alertes: alertesTexte([].concat(rec.titre || "", rec.ingredients || [], rec.etapes || "")) };
+  }
+
+  // ---------- Helpers ----------
+  const $view = document.getElementById("view");
+  function h(tag, attrs, ...kids) {
+    const el = document.createElement(tag);
+    if (attrs) for (const [k, v] of Object.entries(attrs)) {
+      if (v == null || v === false) continue;
+      if (k === "class") el.className = v;
+      else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+      else if (k === "text") el.textContent = v;
+      else el.setAttribute(k, v === true ? "" : v);
+    }
+    kids.flat().forEach(k => { if (k == null || k === false) return; el.append(k.nodeType ? k : document.createTextNode(String(k))); });
+    return el;
+  }
+  let toastTimer;
+  function toast(msg) {
+    document.querySelectorAll(".toast").forEach(t => t.remove());
+    const t = h("div", { class: "toast", role: "status", text: msg });
+    document.body.append(t);
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => t.remove(), 2600);
+  }
+  function errMsg(e) {
+    if (e && e.code === "quota_exceeded") return "Plus de place pour de nouvelles données. Supprime quelques recettes.";
+    if (e && e.code === "invalid_argument") return "Tu n'as pas le droit de modifier l'appli avec ce lien.";
+    return "L'enregistrement a échoué. Réessaie dans un instant.";
+  }
+  function sampleMsg(e) {
+    const c = e && e.code;
+    if (c === "not_granted" || c === "sampling_disabled") return "Claude n'a pas été autorisé pour cette page.";
+    if (c === "rate_limited") return "Trop de demandes d'un coup. Réessaie dans quelques minutes.";
+    if (c === "image_rejected") return "Cette photo n'a pas pu être lue. Essaie une photo plus nette, en JPEG ou PNG.";
+    if (c === "invalid_json" || c === "empty_completion") return "La réponse n'était pas exploitable. Réessaie.";
+    if (c === "session_expired") return "Reconnecte-toi à Claude puis réessaie.";
+    if (c === "refused") return "Claude n'a pas voulu répondre à cette demande. Essaie autrement.";
+    if (c === "capability_disabled" || c === "capability_removed" || c === "not_declared") return "Claude n'est pas disponible dans cette version de l'appli Claude. Mets-la à jour ou ouvre la page dans un navigateur.";
+    return "Ça n'a pas marché. Réessaie dans un instant." + (c ? " (code : " + c + ")" : "");
+  }
+  // sample.json may be missing on older Claude apps: fall back to plain text and parse it here.
+  function lireJSON(t) {
+    t = String(t || "").replace(/```(?:json)?/gi, "");
+    const i = t.search(/[\[{]/), j = Math.max(t.lastIndexOf("}"), t.lastIndexOf("]"));
+    if (i < 0 || j < i) throw { code: "invalid_json" };
+    try { return JSON.parse(t.slice(i, j + 1)); } catch (e) { throw { code: "invalid_json" }; }
+  }
+  async function demanderJSON(prompt, opts) {
+    const s = state.sample;
+    if (typeof s.json === "function") {
+      try { return await s.json(prompt, opts); }
+      catch (e) { if (!e || (e.code !== "capability_removed" && e.code !== "invalid_json")) throw e; }
+    }
+    const r = await s(prompt, opts);
+    return lireJSON(r && r.text);
+  }
+  function repasPills(rec) { return repasDe(rec).map(r => h("span", { class: "pill meal", text: REPAS_NOM[r] })); }
+  function safetyPill(rec) {
+    const v = verifier(rec);
+    return v.alertes.length
+      ? h("span", { class: "pill warn", text: "Contient : " + v.alertes.map(a => a.nom).join(", ") })
+      : h("span", { class: "pill ok", text: "Sans allergène du foyer" });
+  }
+  function sortedRecettes() { return state.recettes.slice().sort((a, b) => (a.titre || "").localeCompare(b.titre || "", "fr")); }
+  function sures() { return state.recettes.filter(r => verifier(r).alertes.length === 0); }
+
+  // ---------- Dates ----------
+  function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function parse(s) { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); }
+  function addDays(s, n) { const d = parse(s); d.setDate(d.getDate() + n); return iso(d); }
+  function lundiDe(s) { const d = parse(s); const wd = (d.getDay() + 6) % 7; d.setDate(d.getDate() - wd); return iso(d); }
+  function today() { return iso(new Date()); }
+  function moisNom(m) { const [y, mm] = m.split("-").map(Number); return MOIS[mm - 1] + " " + y; }
+  function tousJours() {
+    const out = {};
+    Object.values(state.menus).forEach(m => (m.jours || []).forEach(j => { if (j && j.date) out[j.date] = j; }));
+    return out;
+  }
+  function jourParDefaut() {
+    const jours = tousJours(); const dates = Object.keys(jours).sort();
+    if (!dates.length) return null;
+    const t = today();
+    return dates.find(d => d >= t) || dates[dates.length - 1];
+  }
+
+  // ---------- Matching cantine items to recipes ----------
+  const STOP = new Set(["avec", "sauce", "nature", "chef", "maison", "berlingot", "briquette", "fruit", "fruits", "vinaigrette", "aux", "son", "quartier", "porc", "sans"]);
+  function mots(s) {
+    return norm(s).replace(/[^a-z0-9 ]/g, " ").split(/\s+/)
+      .filter(w => w.length >= 4 && !STOP.has(w))
+      .map(w => w.replace(/(es|s|x)$/, ""));
+  }
+  function proches(items, cours, n) {
+    const cible = new Set(items.flatMap(mots));
+    if (!cible.size) return [];
+    return sures().filter(r => !cours || repasDe(r).includes(cours)).map(r => {
+      const t = mots(r.titre || ""); const ing = (r.ingredients || []).flatMap(mots);
+      let score = 0;
+      new Set(t).forEach(w => { if (cible.has(w)) score += 3; });
+      new Set(ing).forEach(w => { if (cible.has(w)) score += 1; });
+      if (r.source === "perso") score += .5;
+      return { r, score };
+    }).filter(x => x.score >= 1).sort((a, b) => b.score - a.score).slice(0, n).map(x => x.r);
+  }
+
+  // ---------- Suggestion ----------
+  function poolIdees() {
+    return sures().filter(r => state.filtreRepas === "tous" || repasDe(r).includes(state.filtreRepas));
+  }
+
+  // ---------- Themes: what the school goûter is about, and the home version to pack ----------
+  const THEMES = [
+    { id: "chocolat", nom: "Chocolat", re: /chocolat|cacao/, idees: ["2 carrés de chocolat (sans traces de fruits à coque)", "Pain et barre de chocolat"], mots: ["chocolat", "cacao"] },
+    { id: "gateau", nom: "Gâteau", re: /gateau|\bcake\b|moelleux|madeleine|banana bread|clafoutis|\btarte\b|beignet|muffin|brioche|quatre-quarts/, idees: ["Une part de gâteau maison"], mots: ["gateau", "cake", "moelleux", "madeleine", "muffin", "banana", "clafoutis", "tarte", "crepe", "cookie"] },
+    { id: "tartine", nom: "Pain", re: /\bpain\b|confiture|tartine/, idees: ["Pain et confiture", "Tartine beurre et confiture"], mots: ["pain", "tartine", "confiture"] },
+    { id: "fruit", nom: "Fruit", re: /fruit|compote|puree de pomme|\bpommes?\b|poire|banane|clementine/, idees: ["Un fruit de saison", "Compote en gourde"], mots: ["fruit", "compote", "pomme", "poire", "banane"] },
+    { id: "laitage", nom: "Laitage", re: /\blait\b|yaourt|fromage blanc|petits?-suisses?|briquette|creme dessert/, idees: ["Yaourt à boire", "Petite bouteille de lait", "Fromage blanc en pot"], mots: ["lait", "yaourt", "fromage blanc", "petit-suisse"] },
+    { id: "fromage", nom: "Fromage", re: /camembert|cantal|emmental|\bbrie\b|gouda|edam|mimolette|fromage(?! blanc)/, idees: ["Une portion de fromage", "Pain et fromage"], mots: ["fromage", "emmental", "comte", "cantal"] }
+  ];
+  function themesDe(items) {
+    const t = norm(items.join(" | "));
+    return THEMES.filter(th => th.re.test(t));
+  }
+  function recettesTheme(th) {
+    return sures().filter(r => repasDe(r).includes("gouter") || repasDe(r).includes("dessert"))
+      .filter(r => { const s = norm([r.titre].concat(r.ingredients || []).join(" ")); return th.mots.some(m => s.includes(m)); })
+      .sort((a, b) => (b.source === "perso") - (a.source === "perso") || (b.favori ? 1 : 0) - (a.favori ? 1 : 0))
+      .slice(0, 3);
+  }
+
+  // ---------- Panier (what goes in the bag each school day) ----------
+  function panierDe(date) {
+    const p = state.paniers[date] || {};
+    return { dejeuner: Array.isArray(p.dejeuner) ? p.dejeuner : [], gouter: Array.isArray(p.gouter) ? p.gouter : [], pret: !!p.pret };
+  }
+  let panierBusy = Promise.resolve();
+  function majPanier(date, fn) {
+    const p = panierDe(date);
+    const next = fn({ dejeuner: p.dejeuner.slice(), gouter: p.gouter.slice(), pret: p.pret });
+    next.modifieLe = new Date().toISOString();
+    state.paniers[date] = next;
+    render();
+    // One write at a time per document.
+    panierBusy = panierBusy.then(() => savePanier(date, next)).catch(err => toast(errMsg(err)));
+  }
+  function ajouter(date, section, item) {
+    majPanier(date, p => {
+      if (!p[section].some(x => x.texte === item.texte)) p[section].push(item);
+      p.pret = false;
+      return p;
+    });
+    toast("Ajouté au " + (section === "gouter" ? "goûter" : "déjeuner"));
+  }
+  function addBtn(date, section, item, label) {
+    const deja = panierDe(date)[section].some(x => x.texte === item.texte);
+    return h("button", { class: "btn small " + (deja ? "ghost" : "add"), disabled: deja || state.lectureSeule, "aria-label": (label || "Ajouter") + " : " + item.texte,
+      onclick: () => ajouter(date, section, item), text: deja ? "Dans le sac" : "+ Sac" });
+  }
+
+  // ---------- Views ----------
+  function miniRecette(r, extra) {
+    return h("div", { class: "pick" },
+      h("button", { class: "mini", onclick: () => ouvrir(r.id) }, iconeRecette(r),
+        h("span", { class: "mini-txt" }, h("strong", { text: r.titre }),
+          h("span", { class: "row small muted" }, repasPills(r), r.source === "perso" ? h("span", { class: "pill perso", text: "Ta recette" }) : null, r.duree ? r.duree + " min" : null))),
+      extra || null);
+  }
+
+  function viewPanier() {
+    const out = [];
+    const jours = tousJours();
+    const dates = Object.keys(jours).sort();
+    if (dates.length && (!state.jourSel || !jours[state.jourSel])) state.jourSel = jourParDefaut();
+    const t = today();
+    out.push(h("div", { class: "row between" },
+      h("div", null, h("p", { class: "label", text: "Panier repas" }),
+        h("h2", { text: !state.jourSel ? "Aucun menu" : state.vuePanier === "semaine" ? titreSemaine(lundiDe(state.jourSel))
+          : (JOURS_LONG[parse(state.jourSel).getDay()] + " " + parse(state.jourSel).getDate() + " " + MOIS[parse(state.jourSel).getMonth()]).replace(/^./, c => c.toUpperCase()) })),
+      h("button", { class: "btn ghost small", onclick: ouvrirScan }, svgCamera(), "Scanner un menu")));
+
+    if (!state.menusCharges) { out.push(h("div", { class: "empty" }, h("h3", { text: "Chargement du menu…" }))); return out; }
+    if (!dates.length) {
+      out.push(h("div", { class: "empty" },
+        h("h3", { text: "Pas encore de menu" }),
+        h("p", { class: "muted", text: "Prends en photo le menu de la cantine dans le magazine de la ville. L'appli s'en inspire chaque jour pour préparer le panier de ton fils, surtout le goûter." }),
+        h("div", { class: "row" }, h("button", { class: "btn", onclick: ouvrirScan, text: "Scanner le menu du mois" }))));
+      return out;
+    }
+    const lundi = lundiDe(state.jourSel);
+    const premier = lundiDe(dates[0]), dernier = lundiDe(dates[dates.length - 1]);
+    const vue = (id, nom) => h("button", { type: "button", class: "chip", "aria-pressed": String(state.vuePanier === id), text: nom,
+      onclick: () => { state.vuePanier = id; render(); window.scrollTo(0, 0); } });
+    out.push(h("div", { class: "chip-list vue-toggle", role: "group", "aria-label": "Affichage" }, vue("jour", "Jour"), vue("semaine", "Ma semaine")));
+    if (state.vuePanier === "semaine") { out.push(...vueSemaine(lundi, premier, dernier, jours)); return out; }
+    out.push(h("div", { class: "week", role: "group", "aria-label": "Jours d'école" },
+      h("button", { class: "nav", "aria-label": "Semaine précédente", disabled: lundi <= premier, text: "‹",
+        onclick: () => { const w = addDays(lundi, -7); state.jourSel = premierJourMenu(w) || state.jourSel; render(); } }),
+      [0, 1, 2, 3, 4].map(i => {
+        const d = addDays(lundi, i); const has = !!jours[d]; const pret = panierDe(d).pret;
+        return h("button", { class: "day", style: "--dc:" + DAY_VARS[i + 1], "aria-pressed": String(d === state.jourSel), disabled: !has,
+          "aria-label": JOURS_LONG[(i + 1) % 7] + " " + parse(d).getDate() + (has ? "" : ", pas d'école") + (pret ? ", sac prêt" : ""),
+          onclick: () => { state.jourSel = d; render(); } },
+          h("span", { class: "dn", text: JOURS[i + 1] }), h("span", { class: "dd", text: String(parse(d).getDate()) }),
+          pret ? h("span", { class: "ready", "aria-hidden": "true", text: "✓" }) : (d === t ? h("span", { class: "today", "aria-hidden": "true" }) : null));
+      }),
+      h("button", { class: "nav", "aria-label": "Semaine suivante", disabled: lundi >= dernier, text: "›",
+        onclick: () => { const w = addDays(lundi, 7); state.jourSel = premierJourMenu(w) || state.jourSel; render(); } })));
+
+    const j = jours[state.jourSel];
+    const date = j.date;
+    const wd = parse(date).getDay();
+    const dej = j.dejeuner || [], gou = j.gouter || [];
+    const p = panierDe(date);
+
+    // 1. The school menu, as inspiration only
+    out.push(h("section", { class: "inspi", style: "--dc:" + (DAY_VARS[wd] || "var(--d3)") },
+      h("div", { class: "row between" }, h("p", { class: "label", text: "À la cantine" + (date === t ? " aujourd'hui" : "") }), j.titre ? h("span", { class: "pill meal", text: j.titre }) : null),
+      h("p", null, h("strong", { text: "Déjeuner : " }), dej.join(" · ") || "—"),
+      h("p", null, h("strong", { text: "Goûter : " }), gou.join(" · ") || "—")));
+
+    // 4. The bag
+    const champ = h("input", { type: "text", id: "sac-texte", maxlength: "120", placeholder: "Ex. gourde d'eau, clémentine" });
+    let section = "dejeuner";
+    const segG = h("button", { type: "button", class: "chip", "aria-pressed": "false", text: "Goûter" });
+    const segD = h("button", { type: "button", class: "chip", "aria-pressed": "true", text: "Déjeuner" });
+    segG.onclick = () => { section = "gouter"; segG.setAttribute("aria-pressed", "true"); segD.setAttribute("aria-pressed", "false"); };
+    segD.onclick = () => { section = "dejeuner"; segD.setAttribute("aria-pressed", "true"); segG.setAttribute("aria-pressed", "false"); };
+    const formSac = h("form", { class: "sac-form", novalidate: true }, h("div", { class: "chip-list" }, segD, segG),
+      h("div", { class: "pick" }, champ, h("button", { class: "btn small", type: "submit", disabled: state.lectureSeule, text: "Ajouter" })));
+    formSac.addEventListener("submit", e => { e.preventDefault(); const v = champ.value.trim(); if (!v) return; ajouter(date, section, { texte: v }); });
+    const liste = (sec, titre) => h("div", { class: "sac-sec" },
+      h("p", { class: "label", text: titre }),
+      p[sec].length ? h("ul", { class: "sac-list" }, p[sec].map((it, i) => h("li", null, icone(it.texte, sec === "gouter" ? "gouter" : "plat", "sm"),
+        it.recetteId && state.recettes.some(r => r.id === it.recetteId)
+          ? h("button", { class: "linkish", "aria-label": "Voir la recette : " + it.texte, onclick: () => ouvrir(it.recetteId) }, it.texte, h("span", { class: "voir", "aria-hidden": "true", text: "recette ›" })) : h("span", { text: it.texte }),
+        state.lectureSeule ? null : h("button", { class: "x", "aria-label": "Retirer " + it.texte, text: "×",
+          onclick: () => majPanier(date, q => { q[sec].splice(i, 1); q.pret = false; return q; }) }))))
+        : h("p", { class: "muted small", text: "Rien pour l'instant." }));
+    const total = p.dejeuner.length + p.gouter.length;
+    out.push(h("section", { class: "sac" + (p.pret ? " pret" : "") },
+      h("div", { class: "row between" }, h("h3", { text: "Dans le sac" }), p.pret ? h("span", { class: "pill ok", text: "Sac prêt" }) : null),
+      liste("dejeuner", "Déjeuner"), liste("gouter", "Goûter"),
+      state.lectureSeule ? null : formSac,
+      state.lectureSeule ? null : h("div", { class: "row" }, h("button", { class: "btn " + (p.pret ? "ghost" : ""), disabled: !total && !p.pret,
+        onclick: () => majPanier(date, q => { q.pret = !q.pret; return q; }), text: p.pret ? "Ce n'est pas encore prêt" : "Le sac est prêt" }))));
+    // 2. Lunch and goûter: one suggestion per course, all built the same way.
+    // "Autre idée" moves on, "Choisir" opens every safe recipe of that course, Claude invents a new one.
+    const COURS = [{ id: "entree", nom: "Entrée" }, { id: "plat", nom: "Plat" }, { id: "dessert", nom: "Dessert" }];
+    out.push(h("section", { class: "menu-sec" },
+      h("h3", { text: "Déjeuner à préparer" }),
+      h("div", { class: "match" }, COURS.map(c => carteCours(c, "dejeuner", j)))));
+
+    // 3. Goûter: same idea, home version
+    const ths = themesDe(gou);
+    const rapides = [...new Set(ths.length ? ths.flatMap(th => th.idees) : ["Un fruit de saison", "Compote en gourde", "Pain et confiture"])].slice(0, 4);
+    out.push(h("section", { class: "menu-sec" },
+      h("h3", { text: "Goûter à préparer" }),
+      ths.length ? h("p", { class: "muted small", text: "Même idée que ses copains : " + ths.map(x => x.nom.toLowerCase()).join(", ") + "." }) : null,
+      h("div", { class: "match" },
+        carteCours({ id: "gouter", nom: "Goûter" }, "gouter", j),
+        h("div", { class: "theme" },
+          h("p", { class: "label", text: "Sans cuisiner" }),
+          h("div", { class: "quick" }, rapides.map(txt => h("div", { class: "pick" }, icone(txt, "gouter"), h("span", { class: "qtext", text: txt }), addBtn(date, "gouter", { texte: txt }))))))));
+
+    return out;
+  }
+  // One course card: the suggested recipe, Autre idée / Choisir, and a field to write your own.
+  function carteCours(c, section, j) {
+    const date = j.date;
+    const inspi = section === "gouter" ? (j.gouter || []) : (j.dejeuner || []);
+    const r = choisirCours(c.id, inspi, date);
+    const k = date + ":" + c.id;
+    const champ = h("input", { type: "text", maxlength: "120", "aria-label": c.nom + " : à écrire toi-même", placeholder: "Ou écris ton idée" });
+    const perso = h("form", { class: "pick", novalidate: true }, champ, h("button", { class: "btn small add", type: "submit", disabled: state.lectureSeule, text: "+ Sac" }));
+    perso.addEventListener("submit", e => { e.preventDefault(); const v = champ.value.trim(); if (!v) { champ.focus(); return; } ajouter(date, section, { texte: v }); });
+    return h("div", { class: "theme" },
+      h("p", { class: "label", text: c.nom }),
+      r ? miniRecette(r, addBtn(date, section, { texte: r.titre, recetteId: r.id }))
+        : h("p", { class: "muted small", text: "Pas encore de recette de ce type sans allergène du foyer." }),
+      h("div", { class: "row" },
+        r ? h("button", { class: "btn ghost small", onclick: () => { state.decal[k] = (state.decal[k] || 0) + 1; render(); }, text: "Autre idée" }) : null,
+        h("button", { class: "btn ghost small", onclick: () => choisirRecette(c, section, date), text: "Choisir" })),
+      state.lectureSeule ? null : perso);
+  }
+  // Every safe recipe of one course, searchable; favourites and your own recipes first.
+  function choisirRecette(c, section, date) {
+    const sheet = ouvrirSheet("Choisir : " + c.nom);
+    const pool = sures().filter(r => repasDe(r).includes(c.id))
+      .sort((a, b) => (b.favori ? 1 : 0) - (a.favori ? 1 : 0) || (b.source === "perso") - (a.source === "perso") || (a.titre || "").localeCompare(b.titre || "", "fr"));
+    const champ = h("input", { class: "search", type: "search", placeholder: "Chercher une recette ou un ingrédient" });
+    const liste = h("div", { class: "quick" });
+    const remplir = () => {
+      const q = norm(champ.value.trim());
+      const vus = pool.filter(r => !q || norm([r.titre].concat(r.ingredients || []).join(" ")).includes(q));
+      liste.replaceChildren(...(vus.length ? vus.map(r => {
+        const b = addBtn(date, section, { texte: r.titre, recetteId: r.id });
+        b.addEventListener("click", fermer);
+        return miniRecette(r, b);
+      }) : [h("p", { class: "muted small", text: "Aucune recette trouvée." })]));
+    };
+    champ.addEventListener("input", remplir);
+    sheet.append(enteteSheet("Choisir : " + c.nom.toLowerCase()),
+      h("p", { class: "muted small", text: pool.length + " recette" + (pool.length > 1 ? "s" : "") + " sans allergène du foyer." }),
+      champ, liste);
+    remplir();
+  }
+  // Picks a recipe for one course: first the ones that echo the school lunch, then a rotation
+  // that moves on every school day, skipping what went in the bag in the previous days.
+  function choisirCours(cours, dej, date) {
+    const pool = sures().filter(r => repasDe(r).includes(cours)).sort((a, b) => a.id.localeCompare(b.id));
+    if (!pool.length) return null;
+    const recents = new Set();
+    const sec = cours === "gouter" ? "gouter" : "dejeuner";
+    for (let i = 1; i <= 4; i++) panierDe(addDays(date, -i))[sec].forEach(x => x.recetteId && recents.add(x.recetteId));
+    const echoTous = proches(dej, cours, 2).concat(cours === "gouter" ? themesDe(dej).flatMap(recettesTheme).filter(r => repasDe(r).includes("gouter")) : []);
+    const echo = echoTous.filter((r, i) => !recents.has(r.id) && echoTous.findIndex(x => x.id === r.id) === i);
+    const reste = pool.filter(r => !recents.has(r.id) && !echo.some(e => e.id === r.id));
+    const jour = Math.round(parse(date).getTime() / 864e5);
+    const tourne = reste.length ? reste.map((_, i) => reste[(i + jour) % reste.length]) : [];
+    const ordre = echo.concat(tourne);
+    if (!ordre.length) ordre.push(pool[jour % pool.length]);
+    return ordre[(state.decal[date + ":" + cours] || 0) % ordre.length];
+  }
+  function titreSemaine(lundi) {
+    const a = parse(lundi), b = parse(addDays(lundi, 4));
+    return "Semaine du " + a.getDate() + (a.getMonth() === b.getMonth() ? "" : " " + MOIS[a.getMonth()]) + " au " + b.getDate() + " " + MOIS[b.getMonth()];
+  }
+  // The whole school week at a glance: what is in each bag, and whether it is ready.
+  function vueSemaine(lundi, premier, dernier, jours) {
+    const out = [];
+    const ecole = [0, 1, 2, 3, 4].map(i => addDays(lundi, i)).filter(d => jours[d]);
+    const prets = ecole.filter(d => panierDe(d).pret).length;
+    const changer = n => { const w = addDays(lundi, 7 * n); state.jourSel = premierJourMenu(w) || state.jourSel; render(); };
+    out.push(h("div", { class: "sem-nav" },
+      h("button", { class: "nav", "aria-label": "Semaine précédente", disabled: lundi <= premier, text: "‹", onclick: () => changer(-1) }),
+      h("div", { class: "sem-bilan" },
+        h("strong", { text: prets + " / " + ecole.length + " sac" + (ecole.length > 1 ? "s" : "") + " prêt" + (prets > 1 ? "s" : "") }),
+        h("span", { class: "sem-barre", "aria-hidden": "true" }, h("span", { style: "width:" + (ecole.length ? Math.round(100 * prets / ecole.length) : 0) + "%" }))),
+      h("button", { class: "nav", "aria-label": "Semaine suivante", disabled: lundi >= dernier, text: "›", onclick: () => changer(1) })));
+    const t = today();
+    [0, 1, 2, 3, 4].forEach(i => {
+      const d = addDays(lundi, i), j = jours[d], wd = i + 1;
+      const nom = (JOURS_LONG[wd] + " " + parse(d).getDate()).replace(/^./, c => c.toUpperCase());
+      if (!j) { out.push(h("div", { class: "sem-jour off" }, h("span", { class: "sem-nom", text: nom }), h("span", { class: "muted small", text: "Pas d'école" }))); return; }
+      const p = panierDe(d);
+      const items = (sec) => p[sec].length
+        ? h("ul", { class: "sem-list" }, p[sec].map(it => h("li", null, icone(it.texte, sec === "gouter" ? "gouter" : "plat", "sm"), h("span", { text: it.texte }))))
+        : h("p", { class: "muted small", text: "Rien encore" });
+      const total = p.dejeuner.length + p.gouter.length;
+      out.push(h("section", { class: "sem-jour" + (p.pret ? " pret" : ""), style: "--dc:" + DAY_VARS[wd] },
+        h("div", { class: "sem-tete" },
+          h("span", { class: "sem-nom", text: nom + (d === t ? " · aujourd'hui" : "") }),
+          p.pret ? h("span", { class: "pill ok", text: "Prêt" }) : h("span", { class: "pill", text: total ? "À finir" : "À préparer" })),
+        h("div", { class: "sem-cols" },
+          h("div", null, h("p", { class: "label", text: "Déjeuner" }), items("dejeuner")),
+          h("div", null, h("p", { class: "label", text: "Goûter" }), items("gouter"))),
+        (j.gouter || []).length ? h("p", { class: "sem-cantine small", text: "Goûter cantine : " + j.gouter.join(" · ") }) : null,
+        h("div", { class: "row" },
+          h("button", { class: "btn small ghost", onclick: () => { state.jourSel = d; state.vuePanier = "jour"; render(); window.scrollTo(0, 0); }, text: total ? "Modifier" : "Préparer" }),
+          state.lectureSeule || (!total && !p.pret) ? null : h("button", { class: "btn small " + (p.pret ? "ghost" : "add"),
+            onclick: () => majPanier(d, q => { q.pret = !q.pret; return q; }), text: p.pret ? "Pas encore prêt" : "Valider le sac" }))));
+    });
+    return out;
+  }
+  function premierJourMenu(lundi) { const jours = tousJours(); for (let i = 0; i < 5; i++) { const d = addDays(lundi, i); if (jours[d]) return d; } return null; }
+
+  function svgCamera() {
+    const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("aria-hidden", "true");
+    s.setAttribute("width", "18"); s.setAttribute("height", "18");
+    s.setAttribute("fill", "none"); s.setAttribute("stroke", "currentColor"); s.setAttribute("stroke-width", "2"); s.setAttribute("stroke-linecap", "round"); s.setAttribute("stroke-linejoin", "round");
+    s.innerHTML = '<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>';
+    return s;
+  }
+
+  function viewRecettes() {
+    const out = [];
+    out.push(h("input", { class: "search", id: "recherche", type: "search", placeholder: "Chercher une recette ou un ingrédient", value: state.recherche,
+      oninput: e => { state.recherche = e.target.value; renderListe(); } }));
+    out.push(h("div", { class: "chip-list", role: "group", "aria-label": "Filtrer" },
+      [{ id: "tous", nom: "Toutes" }, { id: "favoris", nom: "Favoris" }, { id: "perso", nom: "Les miennes" }, { id: "libanais", nom: "Libanais" }].concat(REPAS).map(r => h("button", {
+        class: "chip", "aria-pressed": String(state.filtreListe === r.id), text: r.nom,
+        onclick: () => { state.filtreListe = r.id; render(); }
+      }))));
+    out.push(h("div", { class: "row" }, h("button", { class: "btn ghost small", onclick: hasard, text: "Une idée au hasard" }), h("button", { class: "btn ghost small", onclick: ouvrirIdeesClaude, text: "Demander à Claude" }),
+      h("span", { class: "muted small", text: "Toutes tes recettes et idées. Celles qui contiennent un allergène du foyer ne sont jamais proposées dans le panier." })));
+    out.push(h("div", { class: "list", id: "liste" }));
+    return out;
+  }
+  // Random safe recipe matching the current filter; your own recipes come up more often.
+  function hasard() {
+    const f = state.filtreListe;
+    state.filtreRepas = REPAS_NOM[f] ? f : "tous";
+    const pool = poolIdees().filter(r => f !== "favoris" || r.favori).filter(r => f !== "perso" || r.source === "perso");
+    if (!pool.length) { toast("Aucune recette sans allergène du foyer pour ce filtre."); return; }
+    let total = 0; const w = pool.map(r => { const x = (r.source === "perso" ? 3 : 1) * (r.favori ? 2 : 1); total += x; return x; });
+    let x = Math.random() * total; let pick = pool[pool.length - 1];
+    for (let i = 0; i < pool.length; i++) { x -= w[i]; if (x <= 0) { pick = pool[i]; break; } }
+    ouvrir(pick.id);
+  }
+  function renderListe() {
+    const el = document.getElementById("liste"); if (!el) return;
+    el.replaceChildren();
+    if (!state.recettesChargees) { el.append(h("p", { class: "muted", text: "Chargement des recettes…" })); return; }
+    const q = norm(state.recherche.trim());
+    const f = state.filtreListe;
+    const list = sortedRecettes().filter(r => {
+      if (f === "favoris" && !r.favori) return false;
+      if (f === "perso" && r.source !== "perso") return false;
+      if (f === "libanais" && r.cuisine !== "libanaise") return false;
+      if (REPAS_NOM[f] && !repasDe(r).includes(f)) return false;
+      if (q && !norm([r.titre].concat(r.ingredients || []).join(" ")).includes(q)) return false;
+      return true;
+    });
+    if (!list.length) {
+      el.append(h("div", { class: "empty" }, h("h3", { text: state.recettes.length ? "Aucune recette trouvée" : "Pas encore de recettes" }),
+        h("p", { class: "muted", text: state.recettes.length ? "Essaie un autre mot ou un autre filtre." : "Ajoute ta première recette avec l'onglet Ajouter." })));
+      return;
+    }
+    list.forEach(r => el.append(h("button", { class: "card", onclick: () => ouvrir(r.id) }, iconeRecette(r, "lg"),
+      h("h3", { text: r.titre }),
+      r.favori ? h("span", { class: "fav", "aria-label": "Favori", text: "★" }) : h("span"),
+      h("div", { class: "meta" }, repasPills(r), r.cuisine === "libanaise" ? h("span", { class: "pill perso", text: "Libanais" }) : null, r.source === "perso" ? h("span", { class: "pill perso", text: "Ta recette" }) : null, safetyPill(r)))));
+    el.prepend(h("p", { class: "muted small", text: list.length + " recette" + (list.length > 1 ? "s" : "") }));
+  }
+
+  function viewAjouter() {
+    const rec = state.edition ? state.recettes.find(r => r.id === state.edition) : null;
+    const base = rec || state.brouillon || null;
+    const sel = new Set(base ? repasDe(base) : []);
+    const out = [];
+    out.push(h("h2", { text: rec ? "Modifier la recette" : "Ajouter une recette" }));
+    if (!rec && !state.brouillon) out.push(h("div", { class: "aides" },
+      h("button", { class: "aide", type: "button", onclick: ouvrirPhotoRecette }, svgCamera(), h("strong", { text: "Photographier une recette" }), h("span", { class: "small muted", text: "Livre, fiche écrite à la main, recette de famille" })),
+      h("button", { class: "aide", type: "button", onclick: ouvrirIdeesClaude }, h("span", { class: "spark", "aria-hidden": "true", text: "✦" }), h("strong", { text: "Demander des recettes à Claude" }), h("span", { class: "small muted", text: "Écris une envie, garde ce qui te plaît" })),
+      h("p", { class: "label", style: "margin-top:6px", text: "Ou écris-la toi-même" })));
+    if (!rec && state.brouillon) out.push(h("p", { class: "notice", text: "Recette proposée ou lue par Claude : relis-la et corrige-la avant d'enregistrer." }));
+    if (state.lectureSeule) out.push(h("p", { class: "notice", text: "Ce lien te permet de consulter les recettes, pas d'en ajouter." }));
+    const check = h("div", { class: "check-box ok", "aria-live": "polite" });
+    const form = h("form", { novalidate: true });
+    const titre = h("input", { type: "text", id: "f-titre", required: true, maxlength: "120", placeholder: "Ex. Gâteau au yaourt de mamie", value: base ? base.titre : "" });
+    const duree = h("input", { type: "number", id: "f-duree", min: "0", max: "600", inputmode: "numeric", placeholder: "30", value: base && base.duree ? base.duree : "" });
+    const portions = h("input", { type: "number", id: "f-portions", min: "0", max: "50", inputmode: "numeric", placeholder: "4", value: base && base.portions ? base.portions : "" });
+    const ingredients = h("textarea", { id: "f-ingredients", placeholder: "Un ingrédient par ligne\n200 g de farine\n2 œufs\n1 yaourt nature" });
+    ingredients.value = base ? (base.ingredients || []).join("\n") : "";
+    const etapes = h("textarea", { id: "f-etapes", placeholder: "1. Préchauffer le four à 180 °C\n2. Mélanger…" });
+    etapes.value = base ? base.etapes || "" : "";
+    const notes = h("input", { type: "text", id: "f-notes", maxlength: "300", placeholder: "Ex. vérifier les traces sur le paquet de pépites", value: base ? base.notes || "" : "" });
+    const repasChips = h("div", { class: "chip-list", role: "group", "aria-label": "Pour quel moment" }, REPAS.map(r => h("button", {
+      type: "button", class: "chip", "aria-pressed": String(sel.has(r.id)), text: r.nom,
+      onclick: e => { sel.has(r.id) ? sel.delete(r.id) : sel.add(r.id); e.currentTarget.setAttribute("aria-pressed", String(sel.has(r.id))); }
+    })));
+    const lire = () => ({
+      titre: titre.value.trim(),
+      ingredients: ingredients.value.split("\n").map(s => s.trim()).filter(Boolean),
+      etapes: etapes.value.trim(), notes: notes.value.trim()
+    });
+    const majCheck = () => {
+      const v = verifier(lire());
+      check.replaceChildren();
+      if (v.alertes.length) {
+        check.className = "check-box warn";
+        check.append(h("strong", { text: "Attention, allergène du foyer repéré" }));
+        v.alertes.forEach(a => check.append(h("span", { text: a.nom + " : « " + a.ligne.slice(0, 80) + " »" })));
+        check.append(h("span", { class: "small", text: "Tu peux l'enregistrer, mais elle ne sera pas proposée en idée." }));
+      } else {
+        check.className = "check-box ok";
+        check.append(h("strong", { text: "Aucun allergène du foyer repéré" }));
+        check.append(h("span", { class: "small", text: "Pense quand même à vérifier les étiquettes (traces possibles)." }));
+      }
+    };
+    [titre, ingredients, etapes].forEach(el => el.addEventListener("input", majCheck));
+    majCheck();
+    const submit = h("button", { class: "btn", type: "submit", disabled: state.lectureSeule, text: rec ? "Enregistrer les modifications" : "Enregistrer la recette" });
+    let photoFichier = null;
+    const photoApercu = h("div", { class: "photo-apercu" });
+    const photoInput = h("input", { type: "file", id: "f-photo", accept: "image/*" });
+    const majApercu = src => photoApercu.replaceChildren(src ? h("img", { src, alt: "Aperçu de la photo" }) : h("span", { class: "muted small", text: "Pas encore de photo" }));
+    majApercu(rec && rec.photo ? photoSrc(rec.photo) : null);
+    photoInput.addEventListener("change", () => { photoFichier = (photoInput.files || [])[0] || null; if (photoFichier) majApercu(URL.createObjectURL(photoFichier)); });
+    const champPhoto = state.assets && !state.lectureSeule ? h("div", { class: "field" },
+      h("span", { class: "label-like", text: "Photo du plat (facultatif)" }),
+      h("label", { class: "photo-pick", for: "f-photo" }, photoApercu, h("span", { class: "btn ghost small" }, svgCamera(), rec && rec.photo ? "Changer" : "Prendre ou choisir"), photoInput)) : null;
+    form.append(
+      h("div", { class: "field" }, h("label", { for: "f-titre", text: "Nom de la recette" }), titre),
+      champPhoto,
+      h("div", { class: "field" }, h("span", { class: "label-like", text: "Pour quel moment ?" }), repasChips),
+      h("div", { class: "two" },
+        h("div", { class: "field" }, h("label", { for: "f-duree", text: "Durée (min)" }), duree),
+        h("div", { class: "field" }, h("label", { for: "f-portions", text: "Portions" }), portions)),
+      h("div", { class: "field" }, h("label", { for: "f-ingredients", text: "Ingrédients" }), ingredients),
+      check,
+      h("div", { class: "field" }, h("label", { for: "f-etapes", text: "Préparation" }), etapes),
+      h("div", { class: "field" }, h("label", { for: "f-notes", text: "Note (facultatif)" }), notes),
+      h("div", { class: "row" }, submit, (rec || state.brouillon) ? h("button", { type: "button", class: "btn ghost", text: "Annuler", onclick: () => { const back = rec ? "recettes" : "cantine"; state.edition = null; state.brouillon = null; go(back); } }) : null));
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      const d = lire();
+      if (!d.titre) { toast("Donne un nom à la recette."); titre.focus(); return; }
+      if (!d.ingredients.length) { toast("Ajoute au moins un ingrédient."); ingredients.focus(); return; }
+      const data = Object.assign({}, rec || {}, d, {
+        repas: REPAS.map(r => r.id).filter(id => sel.has(id)),
+        duree: parseInt(duree.value, 10) || null,
+        portions: parseInt(portions.value, 10) || null,
+        source: rec ? rec.source || "perso" : "perso",
+        favori: rec ? !!rec.favori : false,
+        creeLe: rec && rec.creeLe ? rec.creeLe : new Date().toISOString(),
+        modifieLe: new Date().toISOString()
+      });
+      delete data.id;
+      submit.disabled = true;
+      let nouvelle = null;
+      try {
+        if (photoFichier) {
+          submit.textContent = "Envoi de la photo…";
+          try { nouvelle = await envoyerPhoto(photoFichier); data.photo = nouvelle; delete data.photoCredit; }
+          catch (pe) { toast(photoMsg(pe) + " La recette est enregistrée sans photo."); }
+        }
+        const id = await saveRecette(rec ? rec.id : null, data);
+        if (nouvelle && rec && rec.photo && rec.photo !== nouvelle) oublierPhoto(rec.photo);
+        toast(rec ? "Recette modifiée" : "Recette enregistrée");
+        state.edition = null; state.brouillon = null;
+        if (!rec) state.filtreListe = "tous";
+        go("recettes");
+        if (id) setTimeout(() => ouvrir(id), 50);
+      } catch (err) {
+        if (nouvelle) oublierPhoto(nouvelle);
+        submit.disabled = false; submit.textContent = rec ? "Enregistrer les modifications" : "Enregistrer la recette";
+        if (err && err.code === "invalid_argument") state.lectureSeule = true;
+        toast(errMsg(err));
+      }
+    });
+    out.push(form);
+    return out;
+  }
+
+  function viewReglages(premiere) {
+    const r = state.reglages || { allergenes: DEFAULT_ALLERGENES, autres: "" };
+    const sel = new Set(r.allergenes || []);
+    const out = [];
+    if (premiere) {
+      out.push(h("div", { class: "field" },
+        h("h2", { text: "Quels allergènes faut-il éviter ?" }),
+        h("p", { class: "muted", text: "Coche tout ce qui figure dans le PAI. Les recettes qui en contiennent ne seront jamais proposées, et Claude n'en proposera jamais. Tu pourras changer ce choix plus tard dans l'onglet Allergènes." })));
+    } else {
+      out.push(h("h2", { text: "Allergènes du foyer" }));
+      out.push(h("p", { class: "muted", text: "Les recettes qui contiennent l'un de ces allergènes ne sont jamais proposées pour le panier." }));
+    }
+    const groupes = [...new Set(ALLERGENES.map(a => a.groupe))];
+    const form = h("form", { novalidate: true });
+    groupes.forEach(g => {
+      form.append(h("p", { class: "label group-title", text: g }));
+      form.append(h("div", { class: "allergen-grid" }, ALLERGENES.filter(a => a.groupe === g).map(a => {
+        const cb = h("input", { type: "checkbox", id: "al-" + a.id, checked: sel.has(a.id) });
+        cb.addEventListener("change", () => { cb.checked ? sel.add(a.id) : sel.delete(a.id); });
+        return h("label", { class: "allergen", for: "al-" + a.id }, cb, a.nom);
+      })));
+    });
+    const autres = h("input", { type: "text", id: "al-autres", maxlength: "300", placeholder: "Ex. kiwi, pêche", value: r.autres || "" });
+    form.append(h("div", { class: "field" }, h("label", { for: "al-autres", text: "Autres aliments à éviter (séparés par des virgules)" }), autres));
+    form.append(h("p", { class: "notice", text: "L'appli repère les allergènes dans le texte des recettes. Elle ne voit pas les traces indiquées sur les emballages : vérifie toujours l'étiquette." }));
+    const btn = h("button", { class: "btn", type: "submit", disabled: state.lectureSeule, text: premiere ? "C'est parti" : "Enregistrer" });
+    form.append(h("div", { class: "row" }, btn));
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      btn.disabled = true;
+      const data = { allergenes: ALLERGENES.map(a => a.id).filter(id => sel.has(id)), autres: autres.value.trim(), configure: true, modifieLe: new Date().toISOString() };
+      try {
+        await saveReglages(data);
+        state.reglages = data;
+        toast("Allergènes enregistrés");
+        if (premiere) go("cantine"); else { btn.disabled = false; render(); }
+      } catch (err) {
+        btn.disabled = false;
+        if (err && err.code === "invalid_argument") state.lectureSeule = true;
+        toast(errMsg(err));
+      }
+    });
+    out.push(form);
+    return out;
+  }
+
+  // ---------- Recipes from Claude: a photo of a recipe, or ideas from a wish ----------
+  const FORMAT_RECETTE = '{"titre": string, "repas": ["entree"|"plat"|"dessert"|"gouter", ...], "duree": nombre de minutes, "portions": nombre, "ingredients": [string, ...], "etapes": "1. ...\\n2. ...", "notes": string}';
+  function nettoyerRecette(r) {
+    if (!r || typeof r.titre !== "string" || !Array.isArray(r.ingredients) || !r.ingredients.length) return null;
+    return {
+      titre: r.titre.slice(0, 120),
+      repas: (Array.isArray(r.repas) ? r.repas : []).map(String).filter(x => REPAS_NOM[x]),
+      duree: parseInt(r.duree, 10) || null, portions: parseInt(r.portions, 10) || null,
+      ingredients: r.ingredients.map(String).filter(Boolean).slice(0, 40),
+      etapes: String(r.etapes || ""), notes: String(r.notes || "").slice(0, 300)
+    };
+  }
+  function enteteSheet(titre) {
+    return h("div", { class: "row between" }, h("h2", { text: titre }), h("button", { class: "btn ghost small", type: "button", text: "Fermer", onclick: fermer }));
+  }
+  function ouvrirSheet(label) {
+    fermer();
+    const back = h("div", { class: "sheet-back", id: "sheet", onclick: e => { if (e.target === back) fermer(); } });
+    const sheet = h("div", { class: "sheet", role: "dialog", "aria-modal": "true", "aria-label": label });
+    back.append(sheet); document.body.append(back);
+    document.addEventListener("keydown", escFermer);
+    return sheet;
+  }
+  function attente(texte, ctl) {
+    return h("div", { class: "row" }, h("span", { class: "spinner", "aria-hidden": "true" }), h("span", { text: texte }),
+      ctl ? h("button", { class: "btn ghost small", type: "button", text: "Arrêter", onclick: () => ctl.abort() }) : null);
+  }
+
+  function ouvrirPhotoRecette() {
+    const sheet = ouvrirSheet("Photographier une recette");
+    if (!state.sample || !state.imagesOk) {
+      sheet.append(enteteSheet("Photographier une recette"), h("p", { class: "muted", text: "La lecture de photo n'est pas disponible sur cet appareil ou n'a pas été autorisée. Tu peux m'envoyer la photo dans la conversation du projet, je l'ajouterai au carnet." }));
+      return;
+    }
+    let fichiers = [];
+    const thumbs = h("div", { class: "thumbs" });
+    const input = h("input", { type: "file", id: "photo-recette", accept: "image/jpeg,image/png,image/webp", multiple: true });
+    const lire = h("button", { class: "btn", type: "button", disabled: true, text: "Lire la recette" });
+    const status = h("div", { "aria-live": "polite" });
+    input.addEventListener("change", () => {
+      fichiers = Array.from(input.files || []).slice(0, 4);
+      thumbs.replaceChildren(...fichiers.map(f => h("img", { src: URL.createObjectURL(f), alt: "Photo de la recette" })));
+      lire.disabled = !fichiers.length;
+    });
+    lire.addEventListener("click", async () => {
+      lire.disabled = true;
+      const ctl = new AbortController();
+      status.replaceChildren(attente("Claude lit la recette…", ctl));
+      const prompt = [
+        "Ces photos montrent une recette de cuisine : page de livre, fiche imprimée ou recette écrite à la main, peut-être en français, en arabe ou en anglais.",
+        "Recopie-la fidèlement en français, sans inventer d'ingrédient. Si un mot est illisible, mets ton meilleur choix et signale-le dans notes.",
+        "Pour repas, choisis parmi entree, plat, dessert, gouter selon ce qui convient.",
+        "Allergènes du foyer à signaler dans notes s'ils apparaissent : " + nomsAllergenes().join(", ") + ".",
+        "Si les photos ne contiennent pas de recette, réponds {\"erreur\": \"pas de recette\"}.",
+        "Sinon réponds uniquement avec ce JSON : " + FORMAT_RECETTE
+      ].join("\n");
+      try {
+        const r = await demanderJSON(prompt, { images: fichiers, signal: ctl.signal });
+        const rec = nettoyerRecette(r);
+        if (!rec) { status.replaceChildren(h("p", { style: "color:var(--warn)", text: "Aucune recette n'a été trouvée sur cette photo. Essaie une photo plus nette ou mieux cadrée." })); lire.disabled = false; return; }
+        state.brouillon = rec; state.edition = null;
+        fermer(); go("ajouter", true);
+        toast("Recette lue : relis-la avant d'enregistrer");
+      } catch (e) {
+        lire.disabled = false;
+        status.replaceChildren(e && e.code === "cancelled" ? h("span", { class: "muted", text: "Lecture arrêtée." }) : h("p", { style: "color:var(--warn)", text: sampleMsg(e) }));
+      }
+    });
+    sheet.append(enteteSheet("Photographier une recette"),
+      h("p", { class: "muted", text: "Une page de livre, une fiche écrite à la main, la recette de la famille… Claude la recopie et tu la vérifies avant de l'enregistrer." }),
+      h("label", { class: "drop", for: "photo-recette" }, svgCamera(), h("strong", { text: "Prendre ou choisir une photo" }), h("span", { class: "muted small", text: "Jusqu'à 4 photos si la recette tient sur plusieurs pages" }), input),
+      thumbs, h("div", { class: "row" }, lire), status);
+  }
+
+  function ouvrirIdeesClaude() {
+    const sheet = ouvrirSheet("Demander des recettes à Claude");
+    if (!state.sample) {
+      sheet.append(enteteSheet("Demander des recettes"), h("p", { class: "muted", text: "Claude n'est pas disponible sur cet appareil ou n'a pas été autorisé pour cette page. Tu peux me demander des recettes dans la conversation du projet." }));
+      return;
+    }
+    const envie = h("textarea", { id: "envie", style: "min-height:90px", placeholder: "Ex. plat avec du poulet et des pois chiches, qui se mange froid" });
+    let cours = null;
+    const chips = h("div", { class: "chip-list", role: "group", "aria-label": "Pour quel moment" },
+      [{ id: null, nom: "Peu importe" }].concat(REPAS).map(r => {
+        const b = h("button", { type: "button", class: "chip", "aria-pressed": String(r.id === cours), text: r.nom });
+        b.onclick = () => { cours = r.id; chips.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c === b))); };
+        return b;
+      }));
+    const go1 = h("button", { class: "btn", type: "button", text: "Proposer des recettes" });
+    const res = h("div", { class: "match", "aria-live": "polite" });
+    go1.addEventListener("click", async () => {
+      const txt = envie.value.trim();
+      if (!txt) { toast("Écris d'abord ton envie."); envie.focus(); return; }
+      go1.disabled = true;
+      const ctl = new AbortController();
+      res.replaceChildren(attente("Claude cherche des recettes…", ctl));
+      const deja = state.recettes.map(r => r.titre).slice(0, 150);
+      const prompt = [
+        "Un parent prépare chaque jour le panier repas (déjeuner et goûter) de son fils, qui a un PAI et apporte sa nourriture à l'école. La famille aime aussi la cuisine libanaise.",
+        "Son envie : « " + txt + " ».",
+        cours ? "Moment voulu : " + REPAS_NOM[cours] + "." : "",
+        "Aliments à exclure totalement, y compris dérivés et traces : " + nomsAllergenes().join(", ") + ". Ne propose aucun fruit à coque ni pignon en garniture.",
+        "Recettes déjà dans son carnet, à ne pas reproposer : " + deja.join(", ") + ".",
+        "Propose 4 recettes variées, simples, adaptées à un enfant et qui se transportent bien, en français.",
+        "Réponds uniquement avec un tableau JSON de 4 objets : [" + FORMAT_RECETTE + ", ...]"
+      ].filter(Boolean).join("\n");
+      try {
+        const arr = await demanderJSON(prompt, { cache: false, signal: ctl.signal });
+        const recs = (Array.isArray(arr) ? arr : []).map(nettoyerRecette).filter(Boolean);
+        if (!recs.length) throw { code: "invalid_json" };
+        res.replaceChildren(...recs.map(rec => carteProposition(rec, cours)));
+      } catch (e) {
+        res.replaceChildren(e && e.code === "cancelled" ? h("span", { class: "muted", text: "Recherche arrêtée." }) : h("p", { style: "color:var(--warn)", text: sampleMsg(e) }));
+      }
+      go1.disabled = false; go1.textContent = "Proposer d'autres recettes";
+    });
+    sheet.append(enteteSheet("Demander des recettes"),
+      h("p", { class: "muted", text: "Décris ce qui te ferait plaisir. Claude propose 4 recettes sans tes allergènes, et tu gardes celles que tu veux." }),
+      h("div", { class: "field" }, h("label", { for: "envie", text: "Ton envie" }), envie),
+      chips, h("div", { class: "row" }, go1), res);
+  }
+  function carteProposition(rec, cours) {
+    if (!rec.repas.length && cours) rec.repas = [cours];
+    const v = verifier(rec);
+    const box = h("div", { class: "ai-out" });
+    const garder = h("button", { class: "btn small", type: "button", disabled: state.lectureSeule || v.alertes.length > 0, text: "Garder dans le carnet" });
+    garder.addEventListener("click", async () => {
+      garder.disabled = true;
+      try {
+        await saveRecette(null, Object.assign({}, rec, { source: "perso", origine: "claude", favori: false, creeLe: new Date().toISOString(), modifieLe: new Date().toISOString() }));
+        garder.textContent = "Ajoutée au carnet ✓";
+      } catch (err) { garder.disabled = false; toast(errMsg(err)); }
+    });
+    box.append(
+      h("div", { class: "row", style: "flex-wrap:nowrap" }, icone(rec.titre, rec.repas[0], "lg"), h("h3", { text: rec.titre })),
+      h("div", { class: "row" }, repasPills(rec), rec.duree ? h("span", { class: "pill meal", text: rec.duree + " min" }) : null,
+        v.alertes.length ? h("span", { class: "pill warn", text: "Contient : " + v.alertes.map(a => a.nom).join(", ") }) : h("span", { class: "pill ok", text: "Sans allergène du foyer" })),
+      h("details", null, h("summary", { text: "Voir les ingrédients et la préparation" }),
+        h("ul", { class: "ingr" }, rec.ingredients.map(i => h("li", { text: i }))),
+        rec.etapes ? h("p", { class: "steps small", text: rec.etapes }) : null,
+        rec.notes ? h("p", { class: "small muted", text: rec.notes }) : null),
+      h("div", { class: "row" }, garder,
+        h("button", { class: "btn ghost small", type: "button", onclick: () => { state.brouillon = rec; state.edition = null; fermer(); go("ajouter", true); }, text: "Modifier avant" })));
+    return box;
+  }
+
+  // ---------- Menu scan ----------
+  function ouvrirScan() {
+    fermer();
+    const back = h("div", { class: "sheet-back", id: "sheet", onclick: e => { if (e.target === back) fermer(); } });
+    const sheet = h("div", { class: "sheet", role: "dialog", "aria-modal": "true", "aria-label": "Scanner le menu" });
+    back.append(sheet); document.body.append(back);
+    document.addEventListener("keydown", escFermer);
+    const entete = () => h("div", { class: "row between" }, h("h2", { text: "Scanner le menu du mois" }), h("button", { class: "btn ghost small", type: "button", text: "Fermer", onclick: fermer }));
+
+    if (!state.sample || !state.imagesOk) {
+      sheet.append(entete(), h("p", { text: "La lecture de photo n'est pas disponible sur cet appareil ou n'a pas été autorisée." }),
+        h("p", { class: "muted", text: "En attendant, envoie la photo du menu à Claude dans la conversation du projet : il l'ajoutera à l'appli pour toi." }));
+      return;
+    }
+    let fichiers = [];
+    const thumbs = h("div", { class: "thumbs" });
+    const input = h("input", { type: "file", id: "scan-file", accept: "image/jpeg,image/png,image/webp", multiple: true });
+    const lireBtn = h("button", { class: "btn", type: "button", disabled: true, text: "Lire le menu" });
+    const status = h("div", { "aria-live": "polite" });
+    input.addEventListener("change", () => {
+      fichiers = Array.from(input.files || []).slice(0, 4);
+      thumbs.replaceChildren(...fichiers.map(f => h("img", { src: URL.createObjectURL(f), alt: "Photo du menu" })));
+      lireBtn.disabled = !fichiers.length;
+    });
+    let ctl = null;
+    lireBtn.addEventListener("click", async () => {
+      lireBtn.disabled = true;
+      ctl = new AbortController();
+      status.replaceChildren(h("div", { class: "row" }, h("span", { class: "spinner", "aria-hidden": "true" }),
+        h("span", { text: "Claude lit le menu… cela peut prendre une minute." }),
+        h("button", { class: "btn ghost small", type: "button", text: "Arrêter", onclick: () => ctl.abort() })));
+      const t = today();
+      const prompt = [
+        "Ces photos montrent le menu mensuel d'une cantine scolaire française (magazine municipal). Il peut être photographié de travers ou pivoté.",
+        "Chaque jour a une date, des lignes de déjeuner (repérées « Déj ») et des lignes de goûter (repérées « Goûter »). Il n'y a pas de petit-déjeuner.",
+        "Aujourd'hui nous sommes le " + t + " : déduis l'année des dates et des jours de la semaine.",
+        "Recopie chaque plat tel qu'écrit, un élément par entrée de liste. Garde les mentions de substitution entre parenthèses, par exemple « (sans porc : sauté de dinde) ». Ignore les légendes, logos et textes d'explication.",
+        "Si un jour porte un nom particulier (ex. « Menu Halloween »), mets-le dans titre.",
+        'Réponds uniquement avec ce JSON : {"mois": "AAAA-MM", "jours": [{"date": "AAAA-MM-JJ", "titre": "" , "dejeuner": ["..."], "gouter": ["..."]}]}'
+      ].join("\n");
+      try {
+        const r = await demanderJSON(prompt, { images: fichiers, signal: ctl.signal, modelTier: "complex" });
+        const jours = (r && Array.isArray(r.jours) ? r.jours : []).filter(j => j && /^\d{4}-\d{2}-\d{2}$/.test(j.date)).map(j => {
+          const o = { date: j.date, dejeuner: (j.dejeuner || []).map(String).filter(Boolean), gouter: (j.gouter || []).map(String).filter(Boolean) };
+          if (j.titre) o.titre = String(j.titre);
+          return o;
+        }).sort((a, b) => a.date.localeCompare(b.date));
+        if (!jours.length) throw { code: "invalid_json" };
+        const compte = {}; jours.forEach(j => { const m = j.date.slice(0, 7); compte[m] = (compte[m] || 0) + 1; });
+        const mois = Object.entries(compte).sort((a, b) => b[1] - a[1])[0][0];
+        montrerApercu({ mois, jours, importeLe: new Date().toISOString(), source: "scan" });
+      } catch (e) {
+        lireBtn.disabled = false;
+        status.replaceChildren(e && e.code === "cancelled" ? h("span", { class: "muted", text: "Lecture arrêtée." }) : h("p", { style: "color:var(--warn)", text: sampleMsg(e) }));
+      }
+    });
+    sheet.append(entete(),
+      h("p", { class: "muted", text: "Prends en photo la page du menu dans le magazine de la ville (une ou deux photos si le mois est sur deux pages). Bien à plat, sans reflet, c'est plus fiable. L'appli s'en sert chaque jour pour te donner des idées de panier." }),
+      h("label", { class: "drop", for: "scan-file" }, svgCamera(), h("strong", { text: "Prendre ou choisir une photo" }), h("span", { class: "muted small", text: "JPEG ou PNG, jusqu'à 4 photos" }), input),
+      thumbs, h("div", { class: "row" }, lireBtn), status);
+
+    function montrerApercu(menu) {
+      const existe = !!state.menus[menu.mois];
+      sheet.replaceChildren(entete(),
+        h("p", { text: menu.jours.length + " jours lus pour " + moisNom(menu.mois) + ". Vérifie quelques jours avant d'enregistrer." }),
+        h("div", { class: "preview" }, menu.jours.map(j => h("div", null,
+          h("strong", { text: JOURS_LONG[parse(j.date).getDay()] + " " + parse(j.date).getDate() + (j.titre ? " · " + j.titre : "") }),
+          h("br"), h("span", { text: "Déj : " + j.dejeuner.join(", ") }), h("br"),
+          h("span", { class: "muted", text: "Goûter : " + j.gouter.join(", ") })))),
+        existe ? h("p", { class: "notice", text: "Un menu de " + moisNom(menu.mois) + " existe déjà : il sera remplacé." }) : null,
+        h("div", { class: "row" },
+          h("button", { class: "btn", type: "button", disabled: state.lectureSeule, text: "Enregistrer le menu", onclick: async e => {
+            e.currentTarget.disabled = true;
+            try { await saveMenu(menu); state.jourSel = menu.jours.find(j => j.date >= today())?.date || menu.jours[0].date; fermer(); toast("Menu de " + moisNom(menu.mois) + " enregistré"); go("cantine"); }
+            catch (err) { e.currentTarget.disabled = false; toast(errMsg(err)); }
+          } }),
+          h("button", { class: "btn ghost", type: "button", text: "Recommencer", onclick: ouvrirScan })));
+    }
+  }
+
+  // ---------- Recipe sheet ----------
+  function ouvrir(id) {
+    const rec = state.recettes.find(r => r.id === id); if (!rec) return;
+    fermer();
+    const v = verifier(rec);
+    let confirmSuppr = false;
+    const back = h("div", { class: "sheet-back", id: "sheet", onclick: e => { if (e.target === back) fermer(); } });
+    const suppr = h("button", { class: "btn ghost small", type: "button", text: "Supprimer" });
+    suppr.addEventListener("click", async () => {
+      if (!confirmSuppr) { confirmSuppr = true; suppr.className = "btn danger small"; suppr.textContent = "Confirmer la suppression"; return; }
+      try { await deleteRecette(rec.id); oublierPhoto(rec.photo); fermer(); toast("Recette supprimée"); render(); } catch (err) { toast(errMsg(err)); }
+    });
+    const favBtn = h("button", { class: "btn ghost small", type: "button", text: rec.favori ? "★ Retirer des favoris" : "☆ Ajouter aux favoris" });
+    favBtn.addEventListener("click", async () => {
+      const data = Object.assign({}, rec, { favori: !rec.favori }); delete data.id;
+      try { await saveRecette(rec.id, data); rec.favori = !rec.favori; fermer(); ouvrir(rec.id); } catch (err) { toast(errMsg(err)); }
+    });
+    const sheet = h("div", { class: "sheet", role: "dialog", "aria-modal": "true", "aria-label": rec.titre },
+      h("div", { class: "row between" },
+        h("p", { class: "label", text: rec.source === "perso" ? "Ta recette" : "Idée de départ" }),
+        h("button", { class: "btn ghost small", type: "button", text: "Fermer", onclick: fermer })),
+      rec.photo ? heroPhoto(rec) : null,
+      h("div", { class: "row", style: "flex-wrap:nowrap" }, rec.photo ? null : iconeRecette(rec, "xl"), h("h2", { text: rec.titre })),
+      h("div", { class: "row" }, repasPills(rec), rec.duree ? h("span", { class: "pill meal", text: rec.duree + " min" }) : null,
+        rec.portions ? h("span", { class: "pill meal", text: rec.portions + " portions" }) : null),
+      v.alertes.length
+        ? h("div", { class: "check-box warn" }, h("strong", { text: "Contient un allergène du foyer" }), v.alertes.map(a => h("span", { text: a.nom + " : « " + a.ligne.slice(0, 80) + " »" })))
+        : h("div", { class: "check-box ok" }, h("strong", { text: "Aucun allergène du foyer repéré" }), h("span", { class: "small", text: "Vérifie les étiquettes pour les traces." })),
+      h("h3", { text: "Ingrédients" }),
+      h("ul", { class: "ingr" }, (rec.ingredients || []).map(i => h("li", { text: i }))),
+      rec.etapes ? h("h3", { text: "Préparation" }) : null,
+      rec.etapes ? h("p", { class: "steps", text: rec.etapes }) : null,
+      rec.notes ? h("p", { class: "notice", text: rec.notes }) : null,
+      state.lectureSeule || !state.assets ? null : boutonsPhoto(rec),
+      state.lectureSeule ? null : h("div", { class: "row" }, favBtn,
+        h("button", { class: "btn ghost small", type: "button", text: "Modifier", onclick: () => { fermer(); state.edition = rec.id; state.brouillon = null; go("ajouter", true); } }),
+        suppr));
+    back.append(sheet);
+    document.body.append(back);
+    document.addEventListener("keydown", escFermer);
+  }
+  function heroPhoto(rec) {
+    const img = h("img", { class: "hero-photo", src: photoSrc(rec.photo), alt: "Photo : " + rec.titre });
+    if (!rec.photoCredit) { img.onerror = () => img.remove(); return img; }
+    const fig = h("figure", { class: "hero" }, img, h("figcaption", { class: "small muted", text: "Photo : " + rec.photoCredit }));
+    img.onerror = () => fig.remove();
+    return fig;
+  }
+  function boutonsPhoto(rec) {
+    const input = h("input", { type: "file", accept: "image/*", hidden: true });
+    const status = h("span", { class: "small muted", "aria-live": "polite" });
+    const choisir = h("button", { class: "btn small " + (rec.photo ? "ghost" : "add"), type: "button", onclick: () => input.click() },
+      svgCamera(), rec.photo ? "Changer la photo" : "Ajouter une photo du plat");
+    let confirmer = false;
+    const retirer = rec.photo ? h("button", { class: "btn ghost small", type: "button", text: "Retirer la photo" }) : null;
+    const enregistrer = async (photo) => {
+      const ancienne = rec.photo;
+      const data = Object.assign({}, rec, { modifieLe: new Date().toISOString() }); delete data.id;
+      if (photo) data.photo = photo; else delete data.photo;
+      delete data.photoCredit; delete rec.photoCredit;
+      await saveRecette(rec.id, data);
+      oublierPhoto(ancienne);
+      rec.photo = photo || undefined; if (!photo) delete rec.photo;
+      fermer(); ouvrir(rec.id); render();
+    };
+    input.addEventListener("change", async () => {
+      const f = input.files && input.files[0]; if (!f) return;
+      choisir.disabled = true; status.replaceChildren(h("span", { class: "spinner", "aria-hidden": "true" }), " Envoi de la photo…");
+      let id = null;
+      try { id = await envoyerPhoto(f); await enregistrer(id); toast("Photo ajoutée"); }
+      catch (e) { if (id) oublierPhoto(id); choisir.disabled = false; status.textContent = e && e.code && !/^(invalid_argument|permission)/.test(e.code) ? photoMsg(e) : errMsg(e); }
+    });
+    if (retirer) retirer.addEventListener("click", async () => {
+      if (!confirmer) { confirmer = true; retirer.className = "btn danger small"; retirer.textContent = "Confirmer : retirer la photo"; return; }
+      retirer.disabled = true;
+      try { await enregistrer(null); toast("Photo retirée"); } catch (e) { retirer.disabled = false; toast(errMsg(e)); }
+    });
+    return h("div", { class: "row" }, choisir, retirer, input, status);
+  }
+  function escFermer(e) { if (e.key === "Escape") fermer(); }
+  function fermer() { const s = document.getElementById("sheet"); if (s) s.remove(); document.removeEventListener("keydown", escFermer); }
+
+  // ---------- Render ----------
+  function go(tab, garderEdition) {
+    if (!garderEdition) { state.edition = null; if (tab !== "ajouter" || state.tab !== "ajouter") state.brouillon = null; }
+    state.tab = tab; render(); window.scrollTo(0, 0);
+  }
+  function render() {
+    const premiere = state.reglagesCharges && !(state.reglages && state.reglages.configure);
+    document.querySelectorAll("nav.tabs button").forEach(b => {
+      if (b.dataset.tab === state.tab && !premiere) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
+      b.disabled = premiere;
+    });
+    const pill = document.getElementById("foyer-pill");
+    const r = state.reglages;
+    if (r && r.configure) {
+      const noms = nomsAllergenes();
+      pill.textContent = noms.length === 0 ? "Aucun allergène" : (noms.length <= 2 ? "Sans " + noms.join(" ni ").toLowerCase().replace(/noix de /g, "") : noms.length + " allergènes évités");
+      pill.hidden = false;
+    } else pill.hidden = true;
+
+    document.querySelector("nav.tabs").hidden = !!state.ecran;
+    if (state.ecran) {
+      pill.hidden = true;
+      $view.replaceChildren(h("div", { class: "wrap", style: "gap:18px" }, state.ecran()));
+      return;
+    }
+    let kids;
+    if (!state.reglagesCharges) kids = [h("div", { class: "empty" }, h("h3", { text: "Ouverture…" }), h("p", { class: "muted", text: "Chargement de tes allergènes, du menu et de tes recettes." }))];
+    else if (premiere) kids = viewReglages(true);
+    else if (state.tab === "recettes") kids = viewRecettes();
+    else if (state.tab === "ajouter") kids = viewAjouter();
+    else if (state.tab === "reglages") kids = viewReglages(false);
+    else kids = viewPanier();
+    $view.replaceChildren(h("div", { class: "wrap", style: "gap:18px" }, kids));
+    if (state.tab === "recettes" && !premiere) renderListe();
+  }
+
+  document.querySelectorAll("nav.tabs button").forEach(b => b.addEventListener("click", () => go(b.dataset.tab)));
+
+  // ---------- Boot ----------
+  function bootLocal(raison) {
+    store.mode = "local";
+    const d = lsRead();
+    state.reglages = d.reglages; state.reglagesCharges = true;
+    loadLocal();
+    const banner = document.getElementById("banner");
+    banner.textContent = raison; banner.hidden = false;
+    render();
+  }
+  function refreshSafe() {
+    // Keep a half-typed form or an open sheet intact when the other person saves something.
+    if (document.getElementById("sheet") || state.tab === "ajouter") return;
+    render();
+  }
+  render();
+
+  function ecranConnexion(message) {
+    return () => [h("div", { class: "login" },
+      h("h2", { text: "Bienvenue" }),
+      h("p", { class: "muted", text: message || "Connecte-toi avec ton compte Google pour retrouver vos recettes et vos sacs." }),
+      h("button", { class: "btn", type: "button", text: "Se connecter avec Google", onclick: connecter }))];
+  }
+  function ecranRefus(email) {
+    return () => [h("div", { class: "login" },
+      h("h2", { text: "Accès réservé" }),
+      h("p", { class: "muted", text: "Le compte " + email + " n'a pas accès à cette appli. Connecte-toi avec un compte du foyer." }),
+      h("button", { class: "btn", type: "button", text: "Changer de compte", onclick: () => firebase.auth().signOut() }))];
+  }
+  async function connecter() {
+    const p = new firebase.auth.GoogleAuthProvider();
+    p.setCustomParameters({ prompt: "select_account" });
+    try { await firebase.auth().signInWithPopup(p); }
+    catch (e) {
+      if (e && (e.code === "auth/popup-blocked" || e.code === "auth/operation-not-supported-in-this-environment")) return firebase.auth().signInWithRedirect(p);
+      if (e && e.code !== "auth/popup-closed-by-user" && e.code !== "auth/cancelled-popup-request") { state.ecran = ecranConnexion("La connexion n'a pas marché. Réessaie."); render(); }
+    }
+  }
+
+  // First sign-in on an empty base: copy the data exported from the Claude version.
+  async function importerSiVide(db) {
+    const deja = await db.collection("recettes").limit(1).get();
+    if (!deja.empty) return;
+    let seed;
+    try { const r = await fetch("data/seed.json", { cache: "no-store" }); if (!r.ok) return; seed = await r.json(); } catch (e) { return; }
+    const ecrits = [];
+    if (seed.reglages) ecrits.push([db.doc("reglages/foyer"), seed.reglages]);
+    for (const col of ["recettes", "menus", "paniers"]) for (const [id, d] of Object.entries(seed[col] || {})) ecrits.push([db.collection(col).doc(id), d]);
+    const banner = document.getElementById("banner");
+    banner.textContent = "Première ouverture : je range vos recettes…"; banner.hidden = false;
+    for (let i = 0; i < ecrits.length; i += 400) {
+      const b = db.batch();
+      ecrits.slice(i, i + 400).forEach(([ref, d]) => b.set(ref, d));
+      await b.commit();
+    }
+    banner.hidden = true;
+  }
+
+  let abonnements = [];
+  function demarrer(db) {
+    store.mode = "db"; store.db = db;
+    state.assets = true;
+    const ecoute = (q, ok, ko) => abonnements.push(q.onSnapshot(ok, ko));
+    ecoute(db.doc("reglages/foyer"), snap => {
+      state.reglages = snap.exists ? snap.data() : null;
+      state.reglagesCharges = true;
+      refreshSafe();
+    }, () => { state.reglagesCharges = true; render(); });
+    ecoute(db.collection("recettes"), snap => {
+      state.recettes = snap.docs.map(d => Object.assign({ id: d.id }, d.data()));
+      state.recettesChargees = true;
+      refreshSafe();
+    }, () => { state.recettesChargees = true; render(); });
+    ecoute(db.collection("paniers"), snap => {
+      const m = {}; snap.docs.forEach(d => { m[d.id] = d.data(); });
+      state.paniers = m;
+      refreshSafe();
+    }, () => {});
+    ecoute(db.collection("menus"), snap => {
+      const m = {}; snap.docs.forEach(d => { m[d.id] = d.data(); });
+      state.menus = m; state.menusCharges = true;
+      if (!state.jourSel || !tousJours()[state.jourSel]) state.jourSel = jourParDefaut();
+      refreshSafe();
+    }, () => { state.menusCharges = true; render(); });
+    ecoute(db.collection("photos"), snap => {
+      snap.docs.forEach(d => { state.photoUrls["fs:" + d.id] = d.data().data; });
+      refreshSafe();
+    }, () => {});
+  }
+
+  if (!window.firebase || !window.FIREBASE_CONFIG) {
+    bootLocal("Mode hors ligne : tes recettes sont gardées sur cet appareil seulement.");
+  } else {
+    firebase.initializeApp(window.FIREBASE_CONFIG);
+    const db = firebase.firestore();
+    try { db.enablePersistence({ synchronizeTabs: true }).catch(() => {}); } catch (e) {}
+    firebase.auth().onAuthStateChanged(async user => {
+      abonnements.forEach(u => u()); abonnements = [];
+      if (!user) { state.ecran = ecranConnexion(); render(); return; }
+      try { await db.doc("reglages/foyer").get(); }
+      catch (e) { if (e && e.code === "permission-denied") { state.ecran = ecranRefus(user.email); render(); return; } }
+      state.ecran = null;
+      try { await importerSiVide(db); } catch (e) {}
+      demarrer(db);
+    });
+  }
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+})();
+</script>
+</body>
+</html>

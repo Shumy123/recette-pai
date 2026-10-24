@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Only the family's Google accounts can read or write.
+    function famille() {
+      return request.auth != null && request.auth.token.email_verified == true
+        && request.auth.token.email in ["EMAIL_ELIE", "EMAIL_FEMME"];
+    }
+    match /{document=**} {
+      allow read, write: if famille();
+    }
+  }
+}
