@@ -1013,7 +1013,6 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
         h("div", { class: "sem-cols" },
           h("div", null, h("p", { class: "label", text: "Déjeuner" }), items("dejeuner")),
           h("div", null, h("p", { class: "label", text: "Goûter" }), items("gouter"))),
-        (j.gouter || []).length ? h("p", { class: "sem-cantine small", text: "Goûter cantine : " + j.gouter.join(" · ") }) : null,
         h("div", { class: "row" },
           h("button", { class: "btn small ghost", onclick: () => { state.jourSel = d; state.vuePanier = "jour"; render(); window.scrollTo(0, 0); }, text: total ? "Modifier" : "Préparer" }),
           state.lectureSeule || (!total && !p.pret) ? null : h("button", { class: "btn small " + (p.pret ? "ghost" : "add"),
