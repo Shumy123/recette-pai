@@ -353,6 +353,13 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
   padding: 26px max(18px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(18px, env(safe-area-inset-left, 0px));
   display: flex; flex-direction: column; gap: 14px; position: relative;
 }
+@media (max-width: 700px) {
+  body.sheet-open > .wrap, body.sheet-open > nav.tabs { display: none; }
+  body.sheet-open .sheet-back { position: static; background: none; display: block; }
+  body.sheet-open .sheet { max-height: none; overflow: visible; border-radius: 0; margin: 0 auto; padding-left: 0; padding-right: 0; padding-top: calc(18px + env(safe-area-inset-top, 0px)); background: transparent; }
+  body.sheet-open .sheet::before { display: none; }
+  body.sheet-open { padding-bottom: env(safe-area-inset-bottom, 0px); }
+}
 .sheet::before { content: ""; position: absolute; top: 10px; left: 50%; width: 44px; height: 5px; margin-left: -22px; border-radius: 3px; background: var(--line); }
 .steps { white-space: pre-wrap; overflow-wrap: anywhere; }
 .toast {
@@ -1254,10 +1261,10 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
     return h("div", { class: "row between" }, h("h2", { text: titre }), h("button", { class: "btn ghost small", type: "button", text: "Fermer", onclick: fermer }));
   }
   function ouvrirSheet(label) {
-    fermer();
+    retirerSheet();
     const back = h("div", { class: "sheet-back", id: "sheet", onclick: e => { if (e.target === back) fermer(); } });
     const sheet = h("div", { class: "sheet", role: "dialog", "aria-modal": "true", "aria-label": label });
-    back.append(sheet); document.body.append(back);
+    back.append(sheet); montrerSheet(back);
     document.addEventListener("keydown", escFermer);
     return sheet;
   }
@@ -1386,10 +1393,10 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
 
   // ---------- Menu scan ----------
   function ouvrirScan() {
-    fermer();
+    retirerSheet();
     const back = h("div", { class: "sheet-back", id: "sheet", onclick: e => { if (e.target === back) fermer(); } });
     const sheet = h("div", { class: "sheet", role: "dialog", "aria-modal": "true", "aria-label": "Scanner le menu" });
-    back.append(sheet); document.body.append(back);
+    back.append(sheet); montrerSheet(back);
     document.addEventListener("keydown", escFermer);
     const entete = () => h("div", { class: "row between" }, h("h2", { text: "Scanner le menu du mois" }), h("button", { class: "btn ghost small", type: "button", text: "Fermer", onclick: fermer }));
 
@@ -1467,7 +1474,7 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
   // ---------- Recipe sheet ----------
   function ouvrir(id) {
     const rec = state.recettes.find(r => r.id === id); if (!rec) return;
-    fermer();
+    retirerSheet();
     const v = verifier(rec);
     let confirmSuppr = false;
     const back = h("div", { class: "sheet-back", id: "sheet", onclick: e => { if (e.target === back) fermer(); } });
@@ -1502,7 +1509,7 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
         h("button", { class: "btn ghost small", type: "button", text: "Modifier", onclick: () => { fermer(); state.edition = rec.id; state.brouillon = null; go("ajouter", true); } }),
         suppr));
     back.append(sheet);
-    document.body.append(back);
+    montrerSheet(back);
     document.addEventListener("keydown", escFermer);
   }
   function heroPhoto(rec) {
@@ -1544,11 +1551,41 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
     return h("div", { class: "row" }, choisir, retirer, input, status);
   }
   function escFermer(e) { if (e.key === "Escape") fermer(); }
-  function fermer() { const s = document.getElementById("sheet"); if (s) s.remove(); document.removeEventListener("keydown", escFermer); }
+  // On a phone the sheet becomes a full page that scrolls like the rest of the app,
+  // and the Android back button closes it (one history entry per open sheet).
+  let scrollAvantSheet = 0, ignorerRetour = false;
+  function montrerSheet(back) {
+    if (!document.body.classList.contains("sheet-open")) scrollAvantSheet = window.scrollY;
+    document.body.append(back);
+    document.body.classList.add("sheet-open");
+    if (matchMedia("(max-width: 700px)").matches) window.scrollTo(0, 0);
+    try { if (history.state && history.state.sheet) history.replaceState({ tab: state.tab, sheet: true }, ""); else history.pushState({ tab: state.tab, sheet: true }, ""); } catch (e) {}
+  }
+  function retirerSheet() {
+    const s = document.getElementById("sheet");
+    if (!s) return false;
+    s.remove();
+    document.removeEventListener("keydown", escFermer);
+    document.body.classList.remove("sheet-open");
+    if (matchMedia("(max-width: 700px)").matches) window.scrollTo(0, scrollAvantSheet);
+    return true;
+  }
+  function fermer() {
+    if (!retirerSheet()) return;
+    if (history.state && history.state.sheet) { ignorerRetour = true; history.back(); }
+  }
+  window.addEventListener("popstate", e => {
+    if (ignorerRetour) { ignorerRetour = false; return; }
+    if (retirerSheet()) return;
+    const tab = e.state && e.state.tab;
+    if (tab && tab !== state.tab) { state.tab = tab; state.edition = null; render(); window.scrollTo(0, 0); }
+  });
+  try { history.scrollRestoration = "manual"; history.replaceState({ tab: state.tab }, ""); } catch (e) {}
 
   // ---------- Render ----------
   function go(tab, garderEdition) {
     if (!garderEdition) { state.edition = null; if (tab !== "ajouter" || state.tab !== "ajouter") state.brouillon = null; }
+    if (tab !== state.tab) { try { history.pushState({ tab }, ""); } catch (e) {} }
     state.tab = tab; render(); window.scrollTo(0, 0);
   }
   function render() {
