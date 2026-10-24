@@ -95,13 +95,20 @@ BOOT = r"""  render();
       h("p", { class: "muted", text: "Le compte " + email + " n'a pas accès à cette appli. Connecte-toi avec un compte du foyer." }),
       h("button", { class: "btn", type: "button", text: "Changer de compte", onclick: () => firebase.auth().signOut() }))];
   }
+  function messageConnexion(e) {
+    const c = (e && e.code) || "inconnu";
+    if (c === "auth/unauthorized-domain") return "Firebase ne connaît pas encore ce site. Dans Firebase : Authentication, Settings, Authorized domains, ajoute " + location.hostname + ". (" + c + ")";
+    if (c === "auth/operation-not-allowed") return "La connexion Google n'est pas activée dans Firebase : Authentication, Sign-in method, Google, Enable. (" + c + ")";
+    if (c === "auth/network-request-failed") return "Pas de connexion internet. Réessaie. (" + c + ")";
+    return "La connexion n'a pas marché. Réessaie. (" + c + ")";
+  }
   async function connecter() {
     const p = new firebase.auth.GoogleAuthProvider();
     p.setCustomParameters({ prompt: "select_account" });
     try { await firebase.auth().signInWithPopup(p); }
     catch (e) {
       if (e && (e.code === "auth/popup-blocked" || e.code === "auth/operation-not-supported-in-this-environment")) return firebase.auth().signInWithRedirect(p);
-      if (e && e.code !== "auth/popup-closed-by-user" && e.code !== "auth/cancelled-popup-request") { state.ecran = ecranConnexion("La connexion n'a pas marché. Réessaie."); render(); }
+      if (e && e.code !== "auth/popup-closed-by-user" && e.code !== "auth/cancelled-popup-request") { state.ecran = ecranConnexion(messageConnexion(e)); render(); }
     }
   }
 
