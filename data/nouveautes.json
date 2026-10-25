@@ -1,0 +1,151 @@
+{
+ "recettes": {
+  "idee-gt-far-breton": {
+   "titre": "Far breton aux pruneaux",
+   "repas": [
+    "gouter",
+    "dessert"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "250 g de pruneaux dénoyautés",
+    "4 œufs",
+    "125 g de farine",
+    "100 g de sucre",
+    "1 sachet de sucre vanillé",
+    "50 cl de lait",
+    "30 g de beurre (pour le moule)",
+    "1 pincée de sel"
+   ],
+   "etapes": "1. Préchauffer le four à 200 °C et beurrer un moule.\n2. Fouetter les œufs avec les sucres, ajouter la farine et le sel, puis le lait petit à petit pour éviter les grumeaux.\n3. Répartir les pruneaux dans le moule et verser la pâte dessus.\n4. Cuire 10 min à 200 °C puis 40 min à 180 °C. Laisser refroidir avant de couper en parts.",
+   "duree": 60,
+   "portions": 8,
+   "notes": "Se garde 2 jours au frais et se transporte bien en parts dans une boîte. Sans fruits à coque.",
+   "source": "idee",
+   "favori": false,
+   "photo": "3f75dbd515abab70fcb006149197f5cb",
+   "photoCredit": "Easyfrenchfood, CC BY-SA 3.0, Wikimedia Commons"
+  },
+  "idee-gt-canneles": {
+   "titre": "Mini-cannelés à la vanille",
+   "repas": [
+    "gouter"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "50 cl de lait",
+    "1 gousse de vanille (ou 1 c. à café d'extrait)",
+    "50 g de beurre",
+    "2 œufs + 2 jaunes",
+    "200 g de sucre",
+    "100 g de farine"
+   ],
+   "etapes": "1. Faire bouillir le lait avec la vanille fendue et le beurre, laisser tiédir.\n2. Mélanger le sucre et la farine, ajouter les œufs et les jaunes, puis le lait tiède en fouettant.\n3. Couvrir et laisser reposer 12 à 24 h au frais.\n4. Remuer la pâte, remplir des moules à mini-cannelés beurrés aux 3/4.\n5. Cuire 10 min à 240 °C puis 35 min à 180 °C. Démouler tiède.",
+   "duree": 60,
+   "portions": 24,
+   "notes": "Version sans rhum pour les enfants. Prévoir la pâte la veille.",
+   "source": "idee",
+   "favori": false,
+   "photo": "a6f05aab089b35499f3bd2ccbcd26dfe",
+   "photoCredit": "Nicolo, CC BY-SA 3.0, Wikimedia Commons"
+  },
+  "idee-lb-sfouf": {
+   "titre": "Sfouf (gâteau libanais au curcuma)",
+   "repas": [
+    "gouter",
+    "dessert"
+   ],
+   "cuisine": "libanaise",
+   "ingredients": [
+    "250 g de semoule fine",
+    "100 g de farine",
+    "180 g de sucre",
+    "1 c. à café de curcuma",
+    "1 sachet de levure chimique",
+    "25 cl de lait",
+    "12 cl d'huile neutre",
+    "1 c. à soupe de graines de sésame (facultatif)"
+   ],
+   "etapes": "1. Préchauffer le four à 180 °C et huiler un moule carré.\n2. Mélanger semoule, farine, sucre, curcuma et levure.\n3. Ajouter le lait et l'huile, bien mélanger.\n4. Verser dans le moule, parsemer de sésame.\n5. Cuire 30 à 35 min. Couper en losanges une fois froid.",
+   "duree": 45,
+   "portions": 12,
+   "notes": "Version sans pignons ni amandes (souvent posés dessus à l'origine).",
+   "source": "idee",
+   "favori": false,
+   "photo": "83a2d68a5962458a6a24d7cea2561389",
+   "photoCredit": "celinecelines, CC BY-SA 2.0, Wikimedia Commons"
+  },
+  "idee-pl-gratin-dauphinois": {
+   "titre": "Gratin dauphinois et jambon",
+   "repas": [
+    "plat"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "1 kg de pommes de terre",
+    "50 cl de lait",
+    "20 cl de crème",
+    "1 gousse d'ail",
+    "Sel",
+    "Beurre pour le plat",
+    "4 tranches de jambon (à côté)"
+   ],
+   "etapes": "1. Préchauffer le four à 160 °C. Frotter un plat avec l'ail et le beurrer.\n2. Éplucher et couper les pommes de terre en rondelles fines.\n3. Les cuire 10 min dans le lait avec le sel.\n4. Verser dans le plat, ajouter la crème.\n5. Cuire 1 h jusqu'à ce que le dessus soit doré. Servir avec le jambon.",
+   "duree": 80,
+   "portions": 4,
+   "notes": "Se réchauffe bien : en thermos chaud pour le panier.",
+   "source": "idee",
+   "favori": false,
+   "photo": "6d7bcef3ee5edbeaed14f95556433993",
+   "photoCredit": "Benoit5656, domaine public, Wikimedia Commons"
+  },
+  "idee-ent-salade-lentilles": {
+   "titre": "Salade de lentilles à l'oignon",
+   "repas": [
+    "entree"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "250 g de lentilles blondes ou vertes",
+    "1 petit oignon (ou 1 échalote)",
+    "Persil",
+    "3 c. à soupe d'huile d'olive",
+    "1 c. à soupe de vinaigre",
+    "1 c. à café de moutarde",
+    "Sel"
+   ],
+   "etapes": "1. Cuire les lentilles 20 à 25 min dans l'eau non salée, saler à la fin, égoutter et laisser refroidir.\n2. Émincer finement l'oignon et ciseler le persil.\n3. Préparer la vinaigrette (moutarde, vinaigre, huile, sel).\n4. Mélanger le tout et garder au frais.",
+   "duree": 35,
+   "portions": 4,
+   "notes": "Inspirée du menu de la cantine du 6 octobre. Se prépare la veille ; on peut ajouter des dés de tomate et de concombre.",
+   "source": "idee",
+   "favori": false,
+   "photo": "e440371aa3495bdbeb5c811d1b2c5446",
+   "photoCredit": "DocteurCosmos, CC BY-SA 3.0, Wikimedia Commons"
+  },
+  "idee-gt-muffins-banane": {
+   "titre": "Muffins à la banane",
+   "repas": [
+    "gouter"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "3 bananes bien mûres",
+    "2 œufs",
+    "80 g de sucre",
+    "80 g de beurre fondu",
+    "200 g de farine",
+    "1 sachet de levure chimique",
+    "1 pincée de sel"
+   ],
+   "etapes": "1. Préchauffer le four à 180 °C.\n2. Écraser les bananes, ajouter les œufs, le sucre et le beurre fondu.\n3. Incorporer la farine, la levure et le sel sans trop mélanger.\n4. Remplir des moules à muffins aux 2/3.\n5. Cuire 20 à 22 min.",
+   "duree": 35,
+   "portions": 12,
+   "notes": "Sans fruits à coque : vérifier que les caissettes et la farine ne portent pas de mention de traces.",
+   "source": "idee",
+   "favori": false,
+   "photo": "e3407ffee717c6e6b04a1f4f5fcb230b",
+   "photoCredit": "Jules Morgan, CC BY 2.0, Wikimedia Commons"
+  }
+ }
+}
