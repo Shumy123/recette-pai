@@ -107,7 +107,7 @@ header.top {
   display: inline-block; font-family: var(--f-display); font-size: .62rem; color: var(--accent-ink); background: var(--accent);
   border-radius: 999px; padding: 2px 7px; margin-left: 6px; transform: rotate(-8deg) translateY(-6px);
 }
-#foyer-pill { min-width: 0; flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; display: block; }
+#foyer-pill { min-width: 0; flex: 0 1 auto; max-width: 11rem; white-space: normal; text-align: center; line-height: 1.2; padding: 4px 10px; }
 
 .chip-list { display: flex; flex-wrap: wrap; gap: 7px; }
 .chip {
@@ -262,6 +262,9 @@ form.pick input[type="text"] { padding: 8px 14px; }
 .sem-barre > span { display: block; height: 100%; background: var(--ok); border-radius: 999px; transition: width .4s; }
 .sem-jour { background: var(--surface); border-radius: var(--r); box-shadow: 0 3px 0 var(--line); padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 10px; border-left: 8px solid var(--dc); }
 .sem-jour.pret { box-shadow: 0 3px 0 var(--line), inset 0 0 0 2px var(--ok); }
+.day .ready.absent { background: var(--muted); }
+.sac.absent { text-align: center; color: var(--accent-ink); padding-block: 18px; }
+.sac.absent h3 { font-family: var(--f-display); font-size: 1.15rem; color: var(--accent-ink); }
 .sem-jour.off { flex-direction: row; justify-content: space-between; align-items: center; opacity: .6; border-left-color: var(--line); padding: 10px 14px; }
 .sem-tete { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .sem-nom { font-family: var(--f-display); font-size: 1rem; }
@@ -797,12 +800,12 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
   // ---------- Panier (what goes in the bag each school day) ----------
   function panierDe(date) {
     const p = state.paniers[date] || {};
-    return { dejeuner: Array.isArray(p.dejeuner) ? p.dejeuner : [], gouter: Array.isArray(p.gouter) ? p.gouter : [], pret: !!p.pret };
+    return { dejeuner: Array.isArray(p.dejeuner) ? p.dejeuner : [], gouter: Array.isArray(p.gouter) ? p.gouter : [], pret: !!p.pret, absent: !!p.absent };
   }
   let panierBusy = Promise.resolve();
   function majPanier(date, fn) {
     const p = panierDe(date);
-    const next = fn({ dejeuner: p.dejeuner.slice(), gouter: p.gouter.slice(), pret: p.pret });
+    const next = fn({ dejeuner: p.dejeuner.slice(), gouter: p.gouter.slice(), pret: p.pret, absent: p.absent });
     next.modifieLe = new Date().toISOString();
     state.paniers[date] = next;
     render();
@@ -862,12 +865,12 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
       h("button", { class: "nav", "aria-label": "Semaine précédente", disabled: lundi <= premier, text: "‹",
         onclick: () => { const w = addDays(lundi, -7); state.jourSel = premierJourMenu(w) || state.jourSel; render(); } }),
       [0, 1, 2, 3, 4].map(i => {
-        const d = addDays(lundi, i); const has = !!jours[d]; const pret = panierDe(d).pret;
+        const d = addDays(lundi, i); const has = !!jours[d]; const pret = panierDe(d).pret; const absent = panierDe(d).absent;
         return h("button", { class: "day", style: "--dc:" + DAY_VARS[i + 1], "aria-pressed": String(d === state.jourSel), disabled: !has,
-          "aria-label": JOURS_LONG[(i + 1) % 7] + " " + parse(d).getDate() + (has ? "" : ", pas d'école") + (pret ? ", sac prêt" : ""),
+          "aria-label": JOURS_LONG[(i + 1) % 7] + " " + parse(d).getDate() + (has ? "" : ", pas d'école") + (absent ? ", absent" : pret ? ", sac prêt" : ""),
           onclick: () => { state.jourSel = d; render(); } },
           h("span", { class: "dn", text: JOURS[i + 1] }), h("span", { class: "dd", text: String(parse(d).getDate()) }),
-          pret ? h("span", { class: "ready", "aria-hidden": "true", text: "✓" }) : (d === t ? h("span", { class: "today", "aria-hidden": "true" }) : null));
+          absent ? h("span", { class: "ready absent", "aria-hidden": "true", text: "–" }) : pret ? h("span", { class: "ready", "aria-hidden": "true", text: "✓" }) : (d === t ? h("span", { class: "today", "aria-hidden": "true" }) : null));
       }),
       h("button", { class: "nav", "aria-label": "Semaine suivante", disabled: lundi >= dernier, text: "›",
         onclick: () => { const w = addDays(lundi, 7); state.jourSel = premierJourMenu(w) || state.jourSel; render(); } })));
@@ -883,6 +886,15 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
       h("div", { class: "row between" }, h("p", { class: "label", text: "À la cantine" + (date === t ? " aujourd'hui" : "") }), j.titre ? h("span", { class: "pill meal", text: j.titre }) : null),
       h("p", null, h("strong", { text: "Déjeuner : " }), dej.join(" · ") || "—"),
       h("p", null, h("strong", { text: "Goûter : " }), gou.join(" · ") || "—")));
+
+    if (p.absent) {
+      out.push(h("section", { class: "sac absent" },
+        h("h3", { text: "Absent ce jour-là" }),
+        h("p", { text: "Il ne va pas à l'école : pas de panier à préparer." }),
+        state.lectureSeule ? null : h("div", { class: "row", style: "justify-content:center" },
+          h("button", { class: "btn ghost", onclick: () => majPanier(date, q => { q.absent = false; return q; }), text: "Il va à l'école finalement" }))));
+      return out;
+    }
 
     // 4. The bag
     const champ = h("input", { type: "text", id: "sac-texte", maxlength: "120", placeholder: "Ex. gourde d'eau, clémentine" });
@@ -908,7 +920,8 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
       liste("dejeuner", "Déjeuner"), liste("gouter", "Goûter"),
       state.lectureSeule ? null : formSac,
       state.lectureSeule ? null : h("div", { class: "row" }, h("button", { class: "btn " + (p.pret ? "ghost" : ""), disabled: !total && !p.pret,
-        onclick: () => majPanier(date, q => { q.pret = !q.pret; return q; }), text: p.pret ? "Ce n'est pas encore prêt" : "Le sac est prêt" }))));
+        onclick: () => majPanier(date, q => { q.pret = !q.pret; return q; }), text: p.pret ? "Ce n'est pas encore prêt" : "Le sac est prêt" }),
+        h("button", { class: "btn ghost", onclick: () => majPanier(date, q => { q.absent = true; q.pret = false; return q; }), text: "Absent ce jour-là" }))));
     // 2. Lunch and goûter: one suggestion per course, all built the same way.
     // "Autre idée" moves on, "Choisir" opens every safe recipe of that course, Claude invents a new one.
     const COURS = [{ id: "entree", nom: "Entrée" }, { id: "plat", nom: "Plat" }, { id: "dessert", nom: "Dessert" }];
@@ -994,7 +1007,7 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
   // The whole school week at a glance: what is in each bag, and whether it is ready.
   function vueSemaine(lundi, premier, dernier, jours) {
     const out = [];
-    const ecole = [0, 1, 2, 3, 4].map(i => addDays(lundi, i)).filter(d => jours[d]);
+    const ecole = [0, 1, 2, 3, 4].map(i => addDays(lundi, i)).filter(d => jours[d] && !panierDe(d).absent);
     const prets = ecole.filter(d => panierDe(d).pret).length;
     const changer = n => { const w = addDays(lundi, 7 * n); state.jourSel = premierJourMenu(w) || state.jourSel; render(); };
     out.push(h("div", { class: "sem-nav" },
@@ -1009,6 +1022,8 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
       const nom = (JOURS_LONG[wd] + " " + parse(d).getDate()).replace(/^./, c => c.toUpperCase());
       if (!j) { out.push(h("div", { class: "sem-jour off" }, h("span", { class: "sem-nom", text: nom }), h("span", { class: "muted small", text: "Pas d'école" }))); return; }
       const p = panierDe(d);
+      if (p.absent) { out.push(h("div", { class: "sem-jour off" }, h("span", { class: "sem-nom", text: nom }),
+        h("button", { class: "btn small ghost", onclick: () => { state.jourSel = d; state.vuePanier = "jour"; render(); window.scrollTo(0, 0); }, text: "Absent" }))); return; }
       const items = (sec) => p[sec].length
         ? h("ul", { class: "sem-list" }, p[sec].map(it => h("li", null, icone(it.texte, sec === "gouter" ? "gouter" : "plat", "sm"), h("span", { text: it.texte }))))
         : h("p", { class: "muted small", text: "Rien encore" });
