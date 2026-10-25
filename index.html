@@ -209,10 +209,10 @@ form.pick input[type="text"] { padding: 8px 14px; }
   background: var(--accent); box-shadow: 0 6px 0 var(--accent-deep);
 }
 .sac > *:not(.sac-sec) { grid-column: 1 / -1; }
-.sac > .row.between { padding: 2px 6px 4px; }
+.sac > .row.between { padding: 2px 6px 4px; min-height: 44px; }
 .sac > .row.between h3 { font-family: var(--f-display); font-size: 1.15rem; color: var(--accent-ink); }
 .sac > .row.between h3::after { content: " ♡"; }
-.sac.pret > .row.between .pill.ok { background: var(--sun); color: var(--ink); transform: rotate(6deg); font-family: var(--f-display); font-weight: 400; padding: 4px 12px; box-shadow: 0 3px 0 rgba(0,0,0,.12); }
+.sac.pret > .row.between .pill.ok { background: var(--sun); color: #3e2b4f; transform: rotate(6deg); font-family: var(--f-display); font-weight: 400; padding: 4px 12px; box-shadow: 0 3px 0 rgba(0,0,0,.12); }
 .sac.pret > .row.between .pill.ok::before { content: "★"; }
 .sac-sec { background: var(--surface); border-radius: 18px; padding: 12px 12px 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; min-height: 120px; }
 .sac-sec:nth-child(2) { background: var(--mint); }
@@ -269,6 +269,7 @@ form.pick input[type="text"] { padding: 8px 14px; }
 .day .ready.absent { background: var(--muted); }
 .discret { appearance: none; background: none; border: 0; padding: 4px 2px; font: 700 .82rem var(--f-body); color: inherit; opacity: .75; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .sac .discret { color: var(--accent-ink); margin-left: auto; }
+.sac > .row:last-child { flex-wrap: nowrap; min-height: 52px; }
 .sac.absent { text-align: center; color: var(--accent-ink); padding-block: 18px; }
 .sac.absent h3 { font-family: var(--f-display); font-size: 1.15rem; color: var(--accent-ink); }
 .sem-jour.off { flex-direction: row; justify-content: space-between; align-items: center; opacity: .6; border-left-color: var(--line); padding: 10px 14px; }
@@ -944,8 +945,8 @@ nav.tabs button[aria-current="page"] { color: var(--accent-deep); background: va
       liste("dejeuner", "Déjeuner"), liste("gouter", "Goûter"),
       state.lectureSeule ? null : formSac,
       state.lectureSeule ? null : h("div", { class: "row" }, h("button", { class: "btn " + (p.pret ? "ghost" : ""), disabled: !total && !p.pret,
-        onclick: () => majPanier(date, q => { q.pret = !q.pret; return q; }), text: p.pret ? "Ce n'est pas encore prêt" : "Le sac est prêt" }),
-        h("button", { class: "discret", onclick: () => majPanier(date, q => { q.absent = true; q.pret = false; return q; }), text: "Absent ce jour-là" }))));
+        onclick: () => majPanier(date, q => { q.pret = !q.pret; return q; }), text: p.pret ? "Pas encore prêt" : "Le sac est prêt" }),
+        p.pret ? null : h("button", { class: "discret", onclick: () => majPanier(date, q => { q.absent = true; q.pret = false; return q; }), text: "Absent ce jour-là" }))));
     // 2. Lunch and goûter: one suggestion per course, all built the same way.
     // "Autre idée" moves on, "Choisir" opens every safe recipe of that course, Claude invents a new one.
     const COURS = [{ id: "entree", nom: "Entrée" }, { id: "plat", nom: "Plat" }, { id: "dessert", nom: "Dessert" }];
