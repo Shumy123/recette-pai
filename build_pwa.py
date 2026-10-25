@@ -131,6 +131,21 @@ BOOT = r"""  render();
     banner.hidden = true;
   }
 
+  // Recipes Claude adds each week ship in data/nouveautes.json. Each one is copied into the base once,
+  // so a recipe the family deletes does not come back.
+  async function importerNouveautes(db) {
+    let n;
+    try { const r = await fetch("data/nouveautes.json", { cache: "no-store" }); if (!r.ok) return; n = await r.json(); } catch (e) { return; }
+    const ref = db.doc("reglages/nouveautes");
+    const vus = ((await ref.get()).data() || {}).ids || [];
+    const ids = Object.keys(n.recettes || {}).filter(id => !vus.includes(id));
+    if (!ids.length) return;
+    const b = db.batch();
+    ids.forEach(id => b.set(db.collection("recettes").doc(id), n.recettes[id]));
+    b.set(ref, { ids: vus.concat(ids) });
+    await b.commit();
+  }
+
   let abonnements = [];
   function demarrer(db) {
     store.mode = "db"; store.db = db;
@@ -176,6 +191,7 @@ BOOT = r"""  render();
       catch (e) { if (e && e.code === "permission-denied") { state.ecran = ecranRefus(user.email); render(); return; } }
       state.ecran = null;
       try { await importerSiVide(db); } catch (e) {}
+      try { await importerNouveautes(db); } catch (e) {}
       demarrer(db);
     });
   }
