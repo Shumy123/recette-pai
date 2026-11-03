@@ -146,6 +146,150 @@
    "favori": false,
    "photo": "e3407ffee717c6e6b04a1f4f5fcb230b",
    "photoCredit": "Jules Morgan, CC BY 2.0, Wikimedia Commons"
+  },
+  "idee-pl-quiche-lorraine": {
+   "titre": "Quiche lorraine",
+   "repas": [
+    "plat"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "1 pâte brisée",
+    "200 g de lardons",
+    "3 œufs",
+    "20 cl de crème fraîche",
+    "20 cl de lait",
+    "1 pincée de muscade",
+    "Sel, poivre"
+   ],
+   "etapes": "1. Préchauffer le four à 200 °C et garnir un moule avec la pâte. Piquer le fond à la fourchette.\n2. Faire revenir les lardons à la poêle sans matière grasse, puis les égoutter.\n3. Battre les œufs avec la crème, le lait, la muscade, un peu de sel et de poivre.\n4. Répartir les lardons sur la pâte et verser l'appareil.\n5. Cuire 30 à 35 min jusqu'à ce que la quiche soit dorée. Laisser tiédir avant de couper.",
+   "duree": 50,
+   "portions": 6,
+   "notes": "Se mange froide ou tiède : une part dans une boîte avec quelques crudités. Se garde 2 jours au frais. Vérifier l'étiquette de la pâte (traces de fruits à coque).",
+   "source": "idee",
+   "favori": false,
+   "photo": "1d2b23cc51915c44beb2bf91f45067a5",
+   "photoCredit": "Arnaud 25, CC0, Wikimedia Commons"
+  },
+  "idee-gt-gougeres": {
+   "titre": "Gougères au fromage",
+   "repas": [
+    "gouter",
+    "entree"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "25 cl d'eau",
+    "80 g de beurre",
+    "1 pincée de sel",
+    "150 g de farine",
+    "4 œufs",
+    "120 g de comté ou d'emmental râpé"
+   ],
+   "etapes": "1. Préchauffer le four à 200 °C.\n2. Porter à ébullition l'eau, le beurre et le sel. Hors du feu, verser la farine d'un coup et mélanger vivement.\n3. Remettre sur feu doux 1 min pour dessécher la pâte, puis la mettre dans un saladier.\n4. Ajouter les œufs un par un en mélangeant bien entre chaque, puis le fromage.\n5. Former de petits tas sur une plaque recouverte de papier cuisson et cuire 20 à 25 min sans ouvrir le four.",
+   "duree": 45,
+   "portions": 30,
+   "notes": "Se transportent très bien dans une petite boîte, même froides. Se congèlent cuites. Sans fruits à coque.",
+   "source": "idee",
+   "favori": false,
+   "photo": "2835aaeccb57e58293a631251c387a37",
+   "photoCredit": "Arnaud 25, CC BY-SA 3.0, Wikimedia Commons"
+  },
+  "idee-ds-tarte-tatin": {
+   "titre": "Tarte tatin",
+   "repas": [
+    "dessert"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "1 pâte feuilletée",
+    "6 pommes",
+    "100 g de sucre",
+    "50 g de beurre"
+   ],
+   "etapes": "1. Préchauffer le four à 200 °C.\n2. Dans un moule allant sur le feu, faire fondre le sucre jusqu'au caramel blond, puis ajouter le beurre.\n3. Éplucher les pommes, les couper en quartiers et les serrer dans le caramel. Cuire 10 min à feu doux.\n4. Couvrir avec la pâte en rentrant les bords, piquer et cuire 25 min au four.\n5. Laisser tiédir 10 min puis retourner sur un plat.",
+   "duree": 50,
+   "portions": 6,
+   "notes": "Une part dans une boîte bien fermée. Vérifier l'étiquette de la pâte feuilletée (traces de fruits à coque).",
+   "source": "idee",
+   "favori": false,
+   "photo": "87bea00bf31b8d2d34942a03d5c82936",
+   "photoCredit": "Djenghisz, CC BY-SA 3.0, Wikimedia Commons"
+  },
+  "idee-ds-crumble-pommes": {
+   "titre": "Crumble aux pommes (sans amandes)",
+   "repas": [
+    "dessert",
+    "gouter"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "5 pommes",
+    "1 c. à café de cannelle",
+    "100 g de farine",
+    "80 g de sucre roux",
+    "80 g de beurre froid en dés"
+   ],
+   "etapes": "1. Préchauffer le four à 180 °C.\n2. Éplucher les pommes, les couper en dés et les mettre dans un plat avec la cannelle.\n3. Sabler du bout des doigts la farine, le sucre et le beurre jusqu'à obtenir des miettes.\n4. Répartir les miettes sur les pommes et cuire 30 à 35 min jusqu'à ce que le dessus soit doré.",
+   "duree": 45,
+   "portions": 6,
+   "notes": "Sans poudre d'amande ni fruits à coque (on en met souvent dans le crumble : à éviter). Se transporte dans un petit pot avec couvercle.",
+   "source": "idee",
+   "favori": false,
+   "photo": "d475634ca446254dd24aee70b46ce359",
+   "photoCredit": "Jonathan Harker, CC BY 4.0, Wikimedia Commons"
+  },
+  "idee-pl-blanquette": {
+   "titre": "Blanquette de veau et riz",
+   "repas": [
+    "plat"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "800 g de veau (épaule ou tendron) en morceaux",
+    "2 carottes",
+    "1 oignon",
+    "250 g de champignons de Paris",
+    "1 bouquet garni",
+    "30 g de beurre",
+    "30 g de farine",
+    "20 cl de crème fraîche",
+    "1 jaune d'œuf",
+    "Riz pour servir",
+    "Sel, poivre"
+   ],
+   "etapes": "1. Mettre la viande dans une cocotte, couvrir d'eau froide, porter à ébullition et écumer.\n2. Ajouter les carottes en rondelles, l'oignon, le bouquet garni, saler et laisser mijoter 1 h 30 à couvert.\n3. Faire revenir les champignons au beurre à part.\n4. Prélever 50 cl de bouillon. Dans une casserole, faire fondre le beurre, ajouter la farine, puis le bouillon en fouettant jusqu'à épaissir.\n5. Hors du feu, ajouter la crème et le jaune d'œuf, puis la viande égouttée, les carottes et les champignons. Servir avec du riz.",
+   "duree": 120,
+   "portions": 6,
+   "notes": "Meilleure réchauffée : à préparer la veille et emporter dans une boîte isotherme. Sans fruits à coque.",
+   "source": "idee",
+   "favori": false,
+   "photo": "1f2930d2a9ff29d5e2a64d81e71f0dd0",
+   "photoCredit": "Arnaud 25, CC BY-SA 4.0, Wikimedia Commons"
+  },
+  "idee-gt-pain-epices": {
+   "titre": "Pain d'épices maison",
+   "repas": [
+    "gouter"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "250 g de farine",
+    "150 g de miel",
+    "10 cl de lait",
+    "80 g de sucre roux",
+    "1 œuf",
+    "1 sachet de levure chimique",
+    "2 c. à café d'épices à pain d'épices (cannelle, gingembre, anis)"
+   ],
+   "etapes": "1. Préchauffer le four à 160 °C et beurrer un moule à cake.\n2. Faire tiédir le lait avec le miel et le sucre jusqu'à ce qu'ils fondent.\n3. Mélanger la farine, la levure et les épices, ajouter l'œuf puis le lait au miel.\n4. Verser dans le moule et cuire 45 à 50 min. Laisser refroidir enveloppé dans un torchon.",
+   "duree": 65,
+   "portions": 10,
+   "notes": "Encore meilleur le lendemain, se garde une semaine emballé. Vérifier l'étiquette du mélange d'épices (certains contiennent des traces de fruits à coque). Sans noisettes ni amandes.",
+   "source": "idee",
+   "favori": false,
+   "photo": "9acce0773d2e6343d6a4bef28bd885ba",
+   "photoCredit": "David Monniaux, CC BY-SA 3.0, Wikimedia Commons"
   }
  }
 }
