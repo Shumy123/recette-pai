@@ -131,18 +131,21 @@ BOOT = r"""  render();
     banner.hidden = true;
   }
 
-  // Recipes Claude adds each week ship in data/nouveautes.json. Each one is copied into the base once,
-  // so a recipe the family deletes does not come back.
+  // Recipes and canteen menus Claude adds ship in data/nouveautes.json. Each one is copied into the base once,
+  // so a recipe the family deletes, or a menu they correct, is not overwritten.
   async function importerNouveautes(db) {
     let n;
     try { const r = await fetch("data/nouveautes.json", { cache: "no-store" }); if (!r.ok) return; n = await r.json(); } catch (e) { return; }
     const ref = db.doc("reglages/nouveautes");
-    const vus = ((await ref.get()).data() || {}).ids || [];
+    const deja = (await ref.get()).data() || {};
+    const vus = deja.ids || [], menusVus = deja.menus || [];
     const ids = Object.keys(n.recettes || {}).filter(id => !vus.includes(id));
-    if (!ids.length) return;
+    const mois = Object.keys(n.menus || {}).filter(id => !menusVus.includes(id));
+    if (!ids.length && !mois.length) return;
     const b = db.batch();
     ids.forEach(id => b.set(db.collection("recettes").doc(id), n.recettes[id]));
-    b.set(ref, { ids: vus.concat(ids) });
+    mois.forEach(id => b.set(db.collection("menus").doc(id), n.menus[id]));
+    b.set(ref, { ids: vus.concat(ids), menus: menusVus.concat(mois) });
     await b.commit();
   }
 
