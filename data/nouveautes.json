@@ -290,6 +290,153 @@
    "favori": false,
    "photo": "9acce0773d2e6343d6a4bef28bd885ba",
    "photoCredit": "David Monniaux, CC BY-SA 3.0, Wikimedia Commons"
+  },
+  "idee-ent-veloute-courgettes": {
+   "titre": "Velouté de courgettes au fromage fondu",
+   "repas": [
+    "entree"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "3 courgettes",
+    "1 pomme de terre",
+    "1 oignon",
+    "50 cl de bouillon de légumes",
+    "4 portions de fromage fondu",
+    "1 c. à soupe d'huile d'olive",
+    "Sel, poivre"
+   ],
+   "etapes": "1. Faire revenir l'oignon émincé dans l'huile.\n2. Ajouter les courgettes et la pomme de terre en morceaux, couvrir de bouillon.\n3. Cuire 20 min, puis mixer avec le fromage fondu.\n4. Saler, poivrer. Verser bien chaud dans une bouteille isotherme.",
+   "duree": 35,
+   "portions": 4,
+   "notes": "Le fromage fondu rend le velouté doux, les enfants l'aiment souvent mieux ainsi. Inspiré du menu cantine du 4 décembre.",
+   "source": "idee",
+   "favori": false,
+   "photo": "a7d288a4d6d2d163b5215588438ee659",
+   "photoCredit": "Sb2s3, CC BY-SA 4.0, Wikimedia Commons"
+  },
+  "idee-gt-cake-potiron": {
+   "titre": "Cake moelleux au potiron",
+   "repas": [
+    "gouter"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "300 g de potiron cuit et écrasé (ou butternut)",
+    "2 œufs",
+    "120 g de sucre roux",
+    "8 cl d'huile neutre",
+    "200 g de farine",
+    "1 sachet de levure chimique",
+    "1 c. à café de cannelle",
+    "1 pincée de sel"
+   ],
+   "etapes": "1. Préchauffer le four à 180 °C et huiler un moule à cake.\n2. Fouetter les œufs avec le sucre, ajouter l'huile et la purée de potiron.\n3. Incorporer la farine, la levure, la cannelle et le sel.\n4. Verser dans le moule et cuire 40 à 45 min (la lame doit ressortir sèche).",
+   "duree": 60,
+   "portions": 8,
+   "notes": "Sans noix ni noisettes (beaucoup de recettes en ajoutent : ne pas en mettre). Se coupe en tranches pour le sac. Inspiré du cake potiron du chef (19 novembre).",
+   "source": "idee",
+   "favori": false,
+   "photo": "594b89c2730e72e86e467d03ccf5ccbc",
+   "photoCredit": "Suzette - www.suzette.nu from Arnhem, Netherlands, CC BY 2.0, Wikimedia Commons"
+  },
+  "idee-gt-palets-bretons": {
+   "titre": "Palets bretons au beurre salé",
+   "repas": [
+    "gouter"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "3 jaunes d'œufs",
+    "120 g de sucre",
+    "130 g de beurre demi-sel mou",
+    "180 g de farine",
+    "1/2 sachet de levure chimique"
+   ],
+   "etapes": "1. Fouetter les jaunes avec le sucre jusqu'à ce que le mélange blanchisse.\n2. Ajouter le beurre mou, puis la farine et la levure.\n3. Former un boudin, filmer et réserver 1 h au frais.\n4. Couper des tranches de 1 cm, les poser dans des cercles ou des moules à muffins beurrés.\n5. Cuire 15 min à 180 °C jusqu'à ce qu'ils soient bien dorés.",
+   "duree": 95,
+   "portions": 15,
+   "notes": "Se gardent une semaine dans une boîte en métal. Version maison des « galettes bretonnes » du goûter de la cantine (2 décembre), sans risque de traces de fruits à coque.",
+   "source": "idee",
+   "favori": false,
+   "photo": "4fbf06843f5d872d86fe401058e8a021",
+   "photoCredit": "Arnaud 25, CC BY-SA 4.0, Wikimedia Commons"
+  },
+  "idee-gt-rochers-coco": {
+   "titre": "Rochers à la noix de coco",
+   "repas": [
+    "gouter",
+    "dessert"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "3 blancs d'œufs",
+    "150 g de sucre",
+    "200 g de noix de coco râpée",
+    "1 sachet de sucre vanillé"
+   ],
+   "etapes": "1. Préchauffer le four à 180 °C.\n2. Mélanger les blancs (non montés), le sucre, le sucre vanillé et la noix de coco.\n3. Former de petits tas avec deux cuillères sur une plaque avec papier cuisson.\n4. Cuire 15 à 20 min jusqu'à ce que les pointes soient dorées.",
+   "duree": 30,
+   "portions": 15,
+   "notes": "La noix de coco n'est pas un fruit à coque comme la pistache ou la cajou, mais vérifier l'étiquette de la coco râpée (mention « traces de fruits à coque »). Utilise les blancs restants des palets bretons. Inspiré du moelleux coco de la cantine (4 décembre).",
+   "source": "idee",
+   "favori": false,
+   "photo": "5d884c6b33a2d7933f20558a2a385a8e",
+   "photoCredit": "Jessica from Hove, United Kingdom, CC BY 2.0, Wikimedia Commons"
+  },
+  "idee-pl-boeuf-bourguignon": {
+   "titre": "Bœuf bourguignon doux et pommes de terre",
+   "repas": [
+    "plat"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "800 g de bœuf à braiser (paleron, joue) en cubes",
+    "2 carottes",
+    "1 oignon",
+    "150 g de champignons de Paris",
+    "50 cl de bouillon de bœuf",
+    "1 c. à soupe de concentré de tomate",
+    "1 c. à soupe de farine",
+    "1 bouquet garni (thym, laurier)",
+    "1 c. à soupe d'huile",
+    "600 g de pommes de terre",
+    "Sel, poivre"
+   ],
+   "etapes": "1. Faire dorer la viande dans l'huile en plusieurs fois, réserver.\n2. Faire revenir l'oignon et les carottes en rondelles, saupoudrer de farine.\n3. Remettre la viande, ajouter le concentré de tomate, le bouillon et le bouquet garni.\n4. Couvrir et mijoter 2 h 30 à feu doux, ajouter les champignons 30 min avant la fin.\n5. Cuire les pommes de terre à l'eau et servir avec la sauce.",
+   "duree": 180,
+   "portions": 6,
+   "notes": "Version pour enfants sans vin (bouillon à la place). Encore meilleur réchauffé le lendemain : idéal en boîte isotherme. Inspiré du menu cantine du 30 novembre.",
+   "source": "idee",
+   "favori": false,
+   "photo": "c52385ced2ac7092553630ea90ef5b9c",
+   "photoCredit": "Arnaud 25, CC BY-SA 3.0, Wikimedia Commons"
+  },
+  "idee-pl-poulet-paprika": {
+   "titre": "Poulet au paprika doux et pâtes",
+   "repas": [
+    "plat"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "4 hauts de cuisse de poulet sans peau (ou 500 g de filets)",
+    "1 oignon",
+    "1 poivron rouge",
+    "2 c. à café de paprika doux",
+    "20 cl de crème fraîche",
+    "20 cl de bouillon de volaille",
+    "1 c. à soupe d'huile",
+    "300 g de petites pâtes ou de spätzle",
+    "Sel"
+   ],
+   "etapes": "1. Faire dorer le poulet dans l'huile, réserver.\n2. Faire revenir l'oignon et le poivron émincés, ajouter le paprika hors du feu.\n3. Remettre le poulet, mouiller avec le bouillon et mijoter 25 min à couvert.\n4. Ajouter la crème et laisser épaissir 5 min.\n5. Servir avec les pâtes cuites.",
+   "duree": 45,
+   "portions": 4,
+   "notes": "Paprika DOUX (pas fort) pour les enfants. Se réchauffe bien pour la boîte isotherme. Inspiré du menu cantine du 12 novembre.",
+   "source": "idee",
+   "favori": false,
+   "photo": "048b761097456abd0a1b0788ebfdbb0c",
+   "photoCredit": "Kobako, CC BY-SA 2.5, Wikimedia Commons"
   }
  },
  "menus": {
