@@ -437,6 +437,157 @@
    "favori": false,
    "photo": "048b761097456abd0a1b0788ebfdbb0c",
    "photoCredit": "Kobako, CC BY-SA 2.5, Wikimedia Commons"
+  },
+  "idee-ent-poireaux-vinaigrette": {
+   "titre": "Poireaux vinaigrette",
+   "repas": [
+    "entree"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "4 poireaux moyens (le blanc et un peu de vert tendre)",
+    "1 c. à café de moutarde douce",
+    "1 c. à soupe de vinaigre de vin",
+    "3 c. à soupe d'huile de colza ou d'olive",
+    "1 œuf dur (facultatif)",
+    "Ciboulette",
+    "Sel"
+   ],
+   "etapes": "1. Couper les poireaux en tronçons de 6 à 8 cm, les fendre et bien les rincer.\n2. Les cuire 15 à 20 min à la vapeur ou dans l'eau salée : ils doivent être bien tendres. Égoutter et presser doucement.\n3. Préparer la vinaigrette : moutarde, vinaigre, sel, puis l'huile en fouettant.\n4. Verser sur les poireaux tièdes, parsemer de ciboulette (et d'œuf dur écrasé si on veut). Garder au frais.",
+   "duree": 30,
+   "portions": 4,
+   "notes": "Légume de saison en novembre. Se prépare la veille et se transporte bien dans une boîte bien fermée. Sans fruits à coque.",
+   "source": "idee",
+   "favori": false,
+   "photo": "b1085c635c46177a24b86ad54df45143",
+   "photoCredit": "Benreis, CC BY-SA 4.0, Wikimedia Commons"
+  },
+  "idee-pl-tomates-farcies": {
+   "titre": "Tomates farcies et riz",
+   "repas": [
+    "plat"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "8 tomates moyennes bien fermes",
+    "400 g de chair à saucisse (ou 200 g de bœuf haché + 200 g de veau haché)",
+    "1 oignon",
+    "1 gousse d'ail",
+    "Persil",
+    "1 œuf",
+    "2 c. à soupe de chapelure",
+    "200 g de riz",
+    "Huile d'olive",
+    "Sel, poivre"
+   ],
+   "etapes": "1. Préchauffer le four à 180 °C. Couper le chapeau des tomates, les évider à la cuillère et les retourner pour qu'elles s'égouttent. Garder la pulpe.\n2. Mélanger la viande avec l'oignon et l'ail hachés, le persil, l'œuf, la chapelure, du sel et du poivre.\n3. Farcir les tomates, remettre les chapeaux et les poser dans un plat huilé.\n4. Verser le riz cru autour avec la pulpe hachée et 30 cl d'eau, saler.\n5. Cuire 50 min à 180 °C, en ajoutant un peu d'eau si le riz sèche.",
+   "duree": 75,
+   "portions": 4,
+   "notes": "Se réchauffe très bien et voyage dans une boîte isotherme ou un thermos large. Vérifier que la chapelure et la chair à saucisse ne contiennent pas de traces de pistache ou de cajou.",
+   "source": "idee",
+   "favori": false,
+   "photo": "a9d4bb87af914dc6e45f90b10ec24e3f",
+   "photoCredit": "Véronique Pagnier, CC BY-SA 3.0, Wikimedia Commons"
+  },
+  "idee-pl-endives-jambon": {
+   "titre": "Endives au jambon gratinées",
+   "repas": [
+    "plat"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "6 endives",
+    "6 tranches de jambon blanc",
+    "40 g de beurre",
+    "40 g de farine",
+    "50 cl de lait",
+    "80 g d'emmental râpé",
+    "1 pincée de muscade",
+    "1 c. à café de sucre",
+    "Sel"
+   ],
+   "etapes": "1. Retirer le petit cône amer à la base des endives. Les cuire 20 min à couvert dans une poêle avec une noix de beurre, le sucre et une pincée de sel, puis bien les égoutter.\n2. Préparer la béchamel : faire fondre le beurre, ajouter la farine, puis le lait petit à petit en fouettant jusqu'à ce que ça épaississe. Saler, ajouter la muscade et la moitié du fromage.\n3. Rouler chaque endive dans une tranche de jambon et les ranger dans un plat beurré.\n4. Napper de béchamel, parsemer du reste de fromage et gratiner 20 min à 200 °C.",
+   "duree": 60,
+   "portions": 4,
+   "notes": "Le sucre et la cuisson douce enlèvent l'amertume, les enfants les acceptent mieux. Se réchauffe bien pour le thermos. Sans fruits à coque.",
+   "source": "idee",
+   "favori": false,
+   "photo": "e230cd9a77055ae7e9306c28acc637fd",
+   "photoCredit": "Vincent van Zeijst, CC BY-SA 4.0, Wikimedia Commons"
+  },
+  "idee-lb-foul": {
+   "titre": "Foul moudammas (fèves au citron et cumin)",
+   "repas": [
+    "plat",
+    "entree"
+   ],
+   "cuisine": "libanaise",
+   "ingredients": [
+    "2 boîtes de fèves (foul) cuites, ou 1 boîte de fèves + 1 boîte de pois chiches",
+    "1 gousse d'ail",
+    "1 citron",
+    "1 c. à café de cumin",
+    "3 c. à soupe d'huile d'olive",
+    "1 tomate",
+    "Persil",
+    "Sel",
+    "Pain libanais pour accompagner"
+   ],
+   "etapes": "1. Chauffer les fèves avec leur jus 5 à 10 min dans une casserole.\n2. Écraser grossièrement à la fourchette avec l'ail pilé, le jus de citron, le cumin et le sel.\n3. Verser dans un plat, arroser d'huile d'olive et parsemer de tomate en dés et de persil.\n4. Servir tiède avec du pain libanais.",
+   "duree": 15,
+   "portions": 4,
+   "notes": "Classique libanais, rapide et nourrissant. Se garde chaud dans un thermos, ou froid comme une tartinade avec du pain. On peut ajouter un œuf dur. Sans tahiné ni fruits à coque.",
+   "source": "idee",
+   "favori": false,
+   "photo": "3c97ff788950e806894d43b21366aead",
+   "photoCredit": "Miansari66, CC0, Wikimedia Commons"
+  },
+  "idee-ds-creme-caramel": {
+   "titre": "Crème caramel",
+   "repas": [
+    "dessert",
+    "gouter"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "50 cl de lait entier",
+    "3 œufs",
+    "70 g de sucre",
+    "1 sachet de sucre vanillé (ou 1 gousse de vanille)",
+    "Pour le caramel : 100 g de sucre et 3 c. à soupe d'eau"
+   ],
+   "etapes": "1. Préchauffer le four à 160 °C.\n2. Faire le caramel : chauffer le sucre et l'eau sans remuer jusqu'à une couleur blonde, puis le verser au fond de 6 ramequins (attention, c'est très chaud).\n3. Chauffer le lait avec la vanille. Fouetter les œufs avec le sucre, verser le lait chaud dessus en mélangeant.\n4. Répartir dans les ramequins et cuire 35 à 40 min au bain-marie.\n5. Laisser refroidir puis garder au moins 3 h au frais.",
+   "duree": 60,
+   "portions": 6,
+   "notes": "Pour le panier repas, cuire dans des petits pots en verre avec couvercle et les glisser dans le sac avec un pain de glace. Sans fruits à coque.",
+   "source": "idee",
+   "favori": false,
+   "photo": "5388b921b637a6e72241669b0cd25b1d",
+   "photoCredit": "Amanda Coutinho, CC BY 2.0, Wikimedia Commons"
+  },
+  "idee-gt-chouquettes": {
+   "titre": "Chouquettes",
+   "repas": [
+    "gouter"
+   ],
+   "cuisine": "française",
+   "ingredients": [
+    "25 cl d'eau",
+    "100 g de beurre",
+    "1 pincée de sel",
+    "1 c. à soupe de sucre",
+    "150 g de farine",
+    "4 œufs",
+    "Sucre perlé (environ 80 g)"
+   ],
+   "etapes": "1. Préchauffer le four à 200 °C et couvrir une plaque de papier cuisson.\n2. Porter à ébullition l'eau, le beurre, le sel et le sucre. Hors du feu, verser la farine d'un coup et mélanger vivement.\n3. Remettre sur feu doux 1 min en remuant pour dessécher la pâte, puis la mettre dans un saladier.\n4. Ajouter les œufs un par un en mélangeant bien entre chaque.\n5. Former des petits tas avec deux cuillères, parsemer de sucre perlé.\n6. Cuire 20 à 25 min sans ouvrir le four, jusqu'à ce qu'elles soient bien dorées.",
+   "duree": 45,
+   "portions": 30,
+   "notes": "Se gardent 2 jours dans une boîte fermée ; une poignée dans un sachet pour le goûter. Vérifier que le sucre perlé ne porte pas de mention de traces de fruits à coque.",
+   "source": "idee",
+   "favori": false,
+   "photo": "812caa40b081be0c3c103623349d2cc0",
+   "photoCredit": "Aerith (Wikipédia en français), CC0, Wikimedia Commons"
   }
  },
  "menus": {
