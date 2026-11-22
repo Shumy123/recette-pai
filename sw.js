@@ -1,5 +1,5 @@
 // Keeps the app and its photos available offline. Bump VERSION on each release so phones pick up the new page.
-const VERSION = "v14";
+const VERSION = "v15";
 const SHELL = ["./", "index.html", "firebase-config.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"];
 
 self.addEventListener("install", e => {
